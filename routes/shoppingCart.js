@@ -6,10 +6,11 @@ const router = require('koa-router')()
 const adminDuu=require('../controller/adminDuu')
 const oder=require('../controller/oderDuu')
 const oderdetail=require('../controller/oderdetailDuu')
+const carDuu=require('../controller/carDuu')
 router.prefix('/shoppingCart')
 
 /*
-* 购物车 收货地址操作 增删改
+*收货地址操作 增删改
 * */
 router.get('/getadres',async function (ctx, next) {
     await addresDuu.getadres(ctx)
@@ -22,11 +23,11 @@ router.post('/addadres', async function (ctx, next) {
     await addresDuu.addadres(ctx)
 
 })
-router.get('/delete',async function (ctx, next) {
-    await addresDuu.delete(ctx)
+router.get('/deleteadres',async function (ctx, next) {
+    await addresDuu.deleteadres(ctx)
 })
-router.get('/update',async function (ctx, next) {
-    await addresDuu.update(ctx)
+router.get('/updateadres',async function (ctx, next) {
+    await addresDuu.updateadres(ctx)
 })
 /*
 * 针对管理员操作*/
@@ -85,4 +86,28 @@ router.get('/deleteoderdetail',async function (ctx, next) {
 router.get('/updateoderdetail',async function (ctx, next) {
     await oderdetail.updateoderdetail(ctx)
 })
+/*
+
+ 针对购物车进行操作
+*
+* */
+router.get('/getcar',async function (ctx, next) {
+    await carDuu.getcar(ctx)
+})
+router.post('/getAllcar',async function (ctx, next) {
+    console.log('start!')
+    await carDuu.getAllcar(ctx)
+})
+router.post('/addcar', async function (ctx, next) {
+    await carDuu.addcar(ctx)
+
+})
+router.get('/deletecar',async function (ctx, next) {
+    await carDuu.deletecar(ctx)
+})
+router.get('/updatecar',async function (ctx, next) {
+    await carDuu.updatecar(ctx)
+})
+
+
 module.exports = router

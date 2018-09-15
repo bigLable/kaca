@@ -1,21 +1,21 @@
-const DB=require('../model/addressDAO');
+const DB=require('../model/managenmentDAO');
 const form=require('formidable');
 module.exports={
-    getadres:async (ctx)=>{
+    getBacktage:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.getadres(ctx.query.aId)
+        let jsondata=await DB.getBacktage(ctx.query.aId)
         ctx.set('content-type','application/json');
-         ctx.body=jsondata;
+        ctx.body=jsondata;
     },
-    getAlladres:async(ctx)=>{
+    getAllBacktage:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
         console.log('start')
-        let  jsondata=await DB.getAlladres();
+        let  jsondata=await DB.getAllBacktage();
         console.log(jsondata)
         ctx.set('content-type','application/json');
-         ctx.body=jsondata;
+        ctx.body=jsondata;
     },
-    addadres:async(ctx)=>{
+    addBacktage:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
         // let  jsondata=await DB.getAlladres();
         // ctx.set('content-type','application/json');
@@ -27,22 +27,22 @@ module.exports={
                 aName:fileds.value2,
                 customers_cId:fileds.value3
             }
-            DB.addadres(Revalue,(data)=>{
+            DB.addBacktage(Revalue,(data)=>{
                 ctx.body={code:200,message:'delete ok',data:{}}
             });
 
         })
     },
-    deleteadres:async(ctx)=>{
+    deleteBacktage:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.delete(ctx.query.aId);
+        let jsondata=await DB.deleteBacktage(ctx.query.aId);
         ctx.set('content-type','application/json');
         ctx.body={code:200,message:'delete ok',data:jsondata}
     },
-    updateadres:async(ctx)=>{
+    updateBacktage:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.update(ctx.query.aId);
+        let jsondata=await DB.updateBacktage(ctx.query.aId);
         ctx.set('content-type','application/json');
-         ctx.body={code:200,message:'delete ok',data:jsondata}
+        ctx.body={code:200,message:'delete ok',data:jsondata}
     }
 }

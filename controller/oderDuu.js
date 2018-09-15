@@ -1,21 +1,21 @@
-const DB=require('../model/addressDAO');
+const DB=require('../model/oderDAO');
 const form=require('formidable');
 module.exports={
-    getadres:async (ctx)=>{
+    getoder:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.getadres(ctx.query.aId)
+        let jsondata=await DB.getoder(ctx.query.aId)
         ctx.set('content-type','application/json');
-         ctx.body=jsondata;
+        ctx.body=jsondata;
     },
-    getAlladres:async(ctx)=>{
+    getAlloder:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
         console.log('start')
-        let  jsondata=await DB.getAlladres();
+        let  jsondata=await DB.getAlloder();
         console.log(jsondata)
         ctx.set('content-type','application/json');
-         ctx.body=jsondata;
+        ctx.body=jsondata;
     },
-    addadres:async(ctx)=>{
+    addoder:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
         // let  jsondata=await DB.getAlladres();
         // ctx.set('content-type','application/json');
@@ -23,26 +23,26 @@ module.exports={
         let form= new form.IncomingForm();
         await  form.parse(ctx,(err,fileds)=>{
             let Revalue={
-                aId:fileds.value1,
-                aName:fileds.value2,
-                customers_cId:fileds.value3
+                oderId:fileds.value1,
+                oderDate:fileds.value2,
+                manaId:fileds.value3
             }
-            DB.addadres(Revalue,(data)=>{
+            DB.addoder(Revalue,(data)=>{
                 ctx.body={code:200,message:'delete ok',data:{}}
             });
 
         })
     },
-    delete:async(ctx)=>{
+    deleteoder:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.delete(ctx.query.aId);
+        let jsondata=await DB.deleteoder(ctx.query.oderId);
         ctx.set('content-type','application/json');
         ctx.body={code:200,message:'delete ok',data:jsondata}
     },
-    update:async(ctx)=>{
+    updateoder:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.update(ctx.query.aId);
+        let jsondata=await DB.updateoder(ctx.query.oderId);
         ctx.set('content-type','application/json');
-         ctx.body={code:200,message:'delete ok',data:jsondata}
+        ctx.body={code:200,message:'delete ok',data:jsondata}
     }
 }

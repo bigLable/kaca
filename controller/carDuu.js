@@ -1,21 +1,21 @@
-const DB=require('../model/addressDAO');
+const DB=require('../model/carDAO');
 const form=require('formidable');
 module.exports={
-    getadres:async (ctx)=>{
+    getcar:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.getadres(ctx.query.aId)
+        let jsondata=await DB.getcar(ctx.query.aId)
         ctx.set('content-type','application/json');
-         ctx.body=jsondata;
+        ctx.body=jsondata;
     },
-    getAlladres:async(ctx)=>{
+    getAllcar:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
         console.log('start')
-        let  jsondata=await DB.getAlladres();
+        let  jsondata=await DB.getAllcar();
         console.log(jsondata)
         ctx.set('content-type','application/json');
-         ctx.body=jsondata;
+        ctx.body=jsondata;
     },
-    addadres:async(ctx)=>{
+    addcar:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
         // let  jsondata=await DB.getAlladres();
         // ctx.set('content-type','application/json');
@@ -27,22 +27,22 @@ module.exports={
                 aName:fileds.value2,
                 customers_cId:fileds.value3
             }
-            DB.addadres(Revalue,(data)=>{
+            DB.addcar(Revalue,(data)=>{
                 ctx.body={code:200,message:'delete ok',data:{}}
             });
 
         })
     },
-    deleteadres:async(ctx)=>{
+    deletecar:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.delete(ctx.query.aId);
+        let jsondata=await DB.deletecar(ctx.query.aId);
         ctx.set('content-type','application/json');
         ctx.body={code:200,message:'delete ok',data:jsondata}
     },
-    updateadres:async(ctx)=>{
+    updatecar:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.update(ctx.query.aId);
+        let jsondata=await DB.updatecar(ctx.query.aId);
         ctx.set('content-type','application/json');
-         ctx.body={code:200,message:'delete ok',data:jsondata}
+        ctx.body={code:200,message:'delete ok',data:jsondata}
     }
 }

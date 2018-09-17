@@ -3,9 +3,12 @@ const form=require('formidable');
 module.exports={
     getadres:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.getadres(ctx.body.aId)
+        let jsondata=await DB.getadres(ctx.query.aId)
+
+        console.log(jsondata)
         ctx.set('content-type','application/json');
-         ctx.body=jsondata;
+         ctx.body={code:200,message:'查询地址 ok',data:jsondata};
+
     },
     getAlladres:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
@@ -13,36 +16,33 @@ module.exports={
         let  jsondata=await DB.getAlladres();
         console.log(jsondata)
         ctx.set('content-type','application/json');
-         ctx.body=jsondata;
+        ctx.body={code:200,message:'查询地址 ok',data:jsondata};
     },
     addadres:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        // let  jsondata=await DB.getAlladres();
-        // ctx.set('content-type','application/json');
-        // await ctx.body=jsondata;
-        let form= new form.IncomingForm();
-        await  form.parse(ctx,(err,fileds)=>{
-            let Revalue={
-                aId:fileds.value1,
-                aName:fileds.value2,
-                customers_cId:fileds.value3
-            }
+             let Revalue={
+                 aId:ctx.query.aId,
+                 aId:ctx.query.aId,
+                 aId:ctx.query.aId,
+                 aId:ctx.query.aId
+             }
+
             DB.addadres(Revalue,(data)=>{
-                ctx.body='收货地址添加成功'
+                ctx.body={code:200,message:'add ok',data:{}}
             });
 
-        })
+
     },
-    delete:async(ctx)=>{
+    deleteadres:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        await DB.delete(ctx.body.aId);
+        let jsondata=await DB.delete(ctx.query.aId);
         ctx.set('content-type','application/json');
-         ctx.body='删除成功！';
+        ctx.body={code:200,message:'delete ok',data:jsondata}
     },
-    update:async(ctx)=>{
+    updateadres:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.update(ctx.body.aId);
+        let jsondata=await DB.update(ctx.query.aId);
         ctx.set('content-type','application/json');
-         ctx.body={code:200,message:'delete ok',data:jsondata;
+         ctx.body={code:200,message:'delete ok',data:jsondata}
     }
 }

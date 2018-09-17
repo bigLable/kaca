@@ -6,8 +6,8 @@ class DB {
     getAlladres(){
         return DAO('select * from addresses ',[])
     }
-    addadres(oder){
-        return DAO('insert into addresses  values(?,?,?)',[oder.aId,oder.aName,oder.customers_cId])
+    addadres(add){
+        return DAO('insert into addresses(aName,cId,manaId)  values(?,?,?)',[add.aName,add.cId,add.manaId])
     }
     delete(oder){
         return DAO('delete addresses where aId=?',[oder.aId])

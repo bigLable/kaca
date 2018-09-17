@@ -11,7 +11,10 @@ const users = require('./routes/users')
 const shoppingCart = require('./routes/shoppingCart')
 // error handler
 onerror(app)
-
+// app.use(async (ctx,next)=>{
+//     ctx.set('Access-Control-Allow-Origin','*');
+//     next();
+// })
 // middlewares
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']

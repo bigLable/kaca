@@ -1,4 +1,5 @@
 const router = require('koa-router')()
+const hotDuu=require('../controller/hotDuu')
 
 router.get('/', async (ctx, next) => {
   await ctx.render('index', {
@@ -15,5 +16,10 @@ router.get('/json', async (ctx, next) => {
     title: 'koa2 json'
   }
 })
+
+router.get('/gethot',async function (ctx, next) {
+    await hotDuu.gethot(ctx)
+})
+
 
 module.exports = router

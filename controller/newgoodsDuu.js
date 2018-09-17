@@ -1,9 +1,9 @@
-const DB=require('../model/hotDAO');
+const DB=require('../model/newgoodsDAO');
 const form=require('formidable');
 module.exports= {
-    gethot: async (ctx) => {
+    getnew: async (ctx) => {
         ctx.set('Access-Control-Allow-Origin', '*');
-        let jsondata = await DB.gethot()
+        let jsondata = await DB.getnew()
         ctx.set('content-type', 'application/json');
         ctx.body = jsondata;
     }

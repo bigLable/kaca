@@ -52,10 +52,10 @@ router.get('/updateadmin',async function (ctx, next) {
 /*
 * 针对订单表操作*/
 router.get('/getoder',async function (ctx, next) {
-    await oder.getoder()
+    await oder.getoder(ctx)
 })
-router.post('/getAlloder',async function (ctx, next) {
-    console.log('start!')
+router.get('/getAlloder',async function (ctx, next) {
+
     await oder.getAlloder(ctx)
 })
 router.post('/addoder', async function (ctx, next) {

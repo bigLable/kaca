@@ -5,10 +5,10 @@ class DB {
         return DAO('select * from trolleys',[])
     }
     addcar(trolley){
-        return DAO('insert into trolleys values(?,?,?,?)',[trolley.trol])
+        return DAO('insert into trolleys(trolleytotal,customers_cId,orderId,manaId) values(?,?,?,?)',[trolley.trolleytotal,trolley.customers_cId,trolley.orderId,trolley.manaId])
     }
-    deletecar(adminer){
-        return DAO('delete trolleys where aId=?',[adminer.adminId])
+    deletecar(trolleyId){
+        return DAO('delete from trolleys where trolleyId=?',[trolleyId])
     }
 
 }

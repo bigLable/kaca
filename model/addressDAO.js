@@ -9,11 +9,11 @@ class DB {
     addadres(add){
         return DAO('insert into addresses(aName,cId,manaId)  values(?,?,?)',[add.aName,add.cId,add.manaId])
     }
-    delete(oder){
-        return DAO('delete addresses where aId=?',[oder.aId])
+    delete(aId){
+        return DAO('delete from addresses where aId=?',[aId])
     }
     update(oder){
-        return DAO('update addresses set aName=?,customers_cId=? where aId=?',[oder.aId,oder.aName,oder.customers_cId])
+        return DAO('update addresses set aName=?,cId=?,manaId=? where aId=?',[oder.aName,oder.cId,oder.manaId,oder.aId,])
     }
 }
 module.exports= new DB();

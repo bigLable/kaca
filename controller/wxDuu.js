@@ -1,11 +1,11 @@
-const DB=require('../model/oderDAO');
+const DB=require('../model/wxInfo');
 const form=require('formidable');
 module.exports={
     getoder:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.getoder(ctx.query.oderId)
+        let jsondata=await DB.wxGetid(ctx.query.aId)
         ctx.set('content-type','application/json');
-        ctx.body={code:200,message:'查询地址 ok',data:jsondata};
+        ctx.body=jsondata;
     },
     getAlloder:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
@@ -13,12 +13,7 @@ module.exports={
         let  jsondata=await DB.getAlloder();
         console.log(jsondata)
         ctx.set('content-type','application/json');
-
-        try{
-            ctx.body={code:200,message:'查询地址 ok',data:jsondata};
-        }catch (err) {
-            ctx.body={code:500,message:err.message,data:[]};
-        }
+        ctx.body=jsondata;
     },
     addoder:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');

@@ -1,7 +1,7 @@
 const DAO=require('../model/DAO');
 class DB {
-    getoder(oderIdId){
-        return DAO('select * from orders where oderId=?',[oderId])
+    getoder(orderId){
+        return DAO('select * from orders where orderId=?',[orderId])
     }
     getAlloder(){
         return DAO('select * from orders',[])

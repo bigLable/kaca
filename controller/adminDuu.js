@@ -25,14 +25,13 @@ module.exports={
 
       const now=moment(new Date()).format('YYYYMMDDHHmmss');
 
-        await  form.parse(ctx,(err,fileds,files)=>{
-                let filename=files.headpic.name;
-                let src=files.headpic.path;
-                let press = path.join(__dirname,files.headpic.path)
-                let pics=path.basename(filename,path.extname(filename))
-                let fileDes='../'+'public'+pics+now+path.extname(filename)
-                fs.renameSync(press,path.join(path.parse(src).dir,fileDes))
-            })
+        await  form.parse(ctx,(err,fileds,files)=> {
+            let filename = files.headpic.name;
+            let src = files.headpic.path;
+            let press = path.join(__dirname, files.headpic.path)
+            let pics = path.basename(filename, path.extname(filename))
+            let fileDes = '../' + 'public' + pics + now + path.extname(filename)
+            fs.renameSync(press, path.join(path.parse(src).dir, fileDes))
 
             //  var src=files.headpic.path;
             // var des=path.join(__dirname,'../','public/sb',path.basename(src))
@@ -54,6 +53,7 @@ module.exports={
             DB.addadmin(Revalue,(data)=>{
                 ctx.body={code:200,message:'ok',data:{}}
             });
+    })
     },
     deleteadmin:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');

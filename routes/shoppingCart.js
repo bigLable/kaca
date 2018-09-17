@@ -11,16 +11,16 @@ router.prefix('/shoppingCart')
 
 /*
 *收货地址操作 增删改
+*
 * */
 router.get('/getadres',async function (ctx, next) {
-    await addresDuu.getadres(ctx)
+    await addresDuu.getadres(ctx)   //pass test
 })
 router.get('/getAlladres',async function (ctx, next) {
-    console.log('start!')
 
-    await addresDuu.getAlladres(ctx)
+    await addresDuu.getAlladres(ctx)  //pass test
 })
-router.post('/addadres', async function (ctx, next) {
+router.get('/addadres', async function (ctx, next) {
     await addresDuu.addadres(ctx)
 
 })

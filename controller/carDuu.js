@@ -3,9 +3,9 @@ const form=require('formidable');
 module.exports={
     getcar:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.getcar(ctx.query.aId)
+        let jsondata=await DB.getcar(ctx.query.trolleyId)
         ctx.set('content-type','application/json');
-        ctx.body=jsondata;
+        ctx.body={code:200,message:'ok',data:jsondata};
     },
     getAllcar:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
@@ -13,7 +13,7 @@ module.exports={
         let  jsondata=await DB.getAllcar();
         console.log(jsondata)
         ctx.set('content-type','application/json');
-        ctx.body=jsondata;
+        ctx.body={code:200,message:'ok',data:jsondata}
     },
     addcar:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');

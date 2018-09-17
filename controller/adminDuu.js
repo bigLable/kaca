@@ -32,7 +32,7 @@ module.exports={
                 let pics=path.basename(filename,path.extname(filename))
                 let fileDes='../'+'public'+pics+now+path.extname(filename)
                 fs.renameSync(press,path.join(path.parse(src).dir,fileDes))
-            }
+            })
 
             //  var src=files.headpic.path;
             // var des=path.join(__dirname,'../','public/sb',path.basename(src))

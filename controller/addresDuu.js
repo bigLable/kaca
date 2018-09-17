@@ -43,6 +43,6 @@ module.exports={
         ctx.set('Access-Control-Allow-Origin','*');
         let jsondata=await DB.update(ctx.body.aId);
         ctx.set('content-type','application/json');
-         ctx.body={code:200,message:'delete ok',data:jsondata;
+         ctx.body={code:200,message:'delete ok',data:jsondata};
     }
 }

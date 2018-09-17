@@ -15,7 +15,7 @@ router.prefix('/shoppingCart')
 router.get('/getadres',async function (ctx, next) {
     await addresDuu.getadres(ctx)
 })
-router.post('/getAlladres',async function (ctx, next) {
+router.get('/getAlladres',async function (ctx, next) {
     console.log('start!')
 
     await addresDuu.getAlladres(ctx)

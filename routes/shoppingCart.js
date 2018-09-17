@@ -14,6 +14,7 @@ router.prefix('/shoppingCart')
 *
 * */
 router.get('/getadres',async function (ctx, next) {
+    console.log('hello');
     await addresDuu.getadres(ctx)   //pass test
 })
 router.get('/getAlladres',async function (ctx, next) {
@@ -35,7 +36,7 @@ router.get('/updateadres',async function (ctx, next) {
 router.get('/getadmin',async function (ctx, next) {
     await adminDuu.getadmin(ctx)
 })
-router.post('/getAlladmin',async function (ctx, next) {
+router.get('/getAlladmin',async function (ctx, next) {
     console.log('start!')
     await adminDuu.getAlladmin(ctx)
 })
@@ -46,7 +47,7 @@ router.post('/addadmin', async function (ctx, next) {
 router.get('/deleteadmin',async function (ctx, next) {
     await adminDuu.deleteadmin(ctx)
 })
-router.get('/updateadmin',async function (ctx, next) {
+router.post('/updateadmin',async function (ctx, next) {
     await adminDuu.updateadmin(ctx)
 })
 /*

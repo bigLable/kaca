@@ -1,5 +1,4 @@
 const DB=require('../model/oderDAO');
-const form=require('formidable');
 module.exports={
     getoder:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
@@ -22,32 +21,32 @@ module.exports={
     },
     addoder:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        // let  jsondata=await DB.getAlladres();
-        // ctx.set('content-type','application/json');
-        // await ctx.body=jsondata;
-        let form= new form.IncomingForm();
-        await  form.parse(ctx,(err,fileds)=>{
-            let Revalue={
-                oderId:fileds.value1,
-                oderDate:fileds.value2,
-                manaId:fileds.value3
-            }
-            DB.addoder(Revalue,(data)=>{
-                ctx.body={code:200,message:'delete ok',data:{}}
-            });
+        let REV={
+            orderDate:ctx.body.orderDate,
+            manaId:ctx.body.manaId
+        }
 
-        })
+        console.log(REV)
+          let jsondata=await  DB.addoder(REV);
+          ctx.body={code:200,message:'add ok',data:jsondata}
+
     },
     deleteoder:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.deleteoder(ctx.query.oderId);
+        let jsondata=await DB.deleteoder(ctx.query.orderId);
         ctx.set('content-type','application/json');
         ctx.body={code:200,message:'delete ok',data:jsondata}
     },
     updateoder:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.updateoder(ctx.query.oderId);
+        ctx.set('Access-Control-Allow-Origin','*');
+        let REV={
+            orderDate:ctx.query.orderDate,
+            manaId:ctx.query.manaId,
+            orderId:ctx.query.orderId
+        }
+        let jsondata=await DB.updateoder(REV)
         ctx.set('content-type','application/json');
-        ctx.body={code:200,message:'delete ok',data:jsondata}
+        ctx.body={code:200,message:'update ok',data:jsondata}
     }
 }

@@ -3,7 +3,7 @@ const form=require('formidable');
 module.exports={
     getadres:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.getadres(ctx.query.aId)
+        let jsondata=await DB.getadres(ctx.body.aId)
         ctx.set('content-type','application/json');
          ctx.body=jsondata;
     },
@@ -28,21 +28,21 @@ module.exports={
                 customers_cId:fileds.value3
             }
             DB.addadres(Revalue,(data)=>{
-                ctx.body={code:200,message:'delete ok',data:{}}
+                ctx.body='收货地址添加成功'
             });
 
         })
     },
-    deleteadres:async(ctx)=>{
+    delete:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.delete(ctx.query.aId);
+        await DB.delete(ctx.body.aId);
         ctx.set('content-type','application/json');
-        ctx.body={code:200,message:'delete ok',data:jsondata}
+         ctx.body='删除成功！';
     },
-    updateadres:async(ctx)=>{
+    update:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.update(ctx.query.aId);
+        let jsondata=await DB.update(ctx.body.aId);
         ctx.set('content-type','application/json');
-         ctx.body={code:200,message:'delete ok',data:jsondata}
+         ctx.body={code:200,message:'delete ok',data:jsondata;
     }
 }

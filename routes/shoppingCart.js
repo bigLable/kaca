@@ -17,6 +17,7 @@ router.get('/getadres',async function (ctx, next) {
 })
 router.post('/getAlladres',async function (ctx, next) {
     console.log('start!')
+
     await addresDuu.getAlladres(ctx)
 })
 router.post('/addadres', async function (ctx, next) {

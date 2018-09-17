@@ -6,14 +6,14 @@ class DB {
     getAlloder(){
         return DAO('select * from orders',[])
     }
-    addoder(oder){
-        return DAO('insert into orders values(?,?,?)',[oder.oderId,oder.oderDate,oder.manaId])
+    addoder(orde){
+        return DAO('insert into orders(adminName,adminsPwd,adminspic,manaId) values(?,?)',[orde.orderDate,orde.manaId])
     }
-    deleteoder(oder){
-        return DAO('delete orders where orderId=?',[oder.oderId])
+    deleteoder(adminId){
+        return DAO('delete from admins where adminId=?',[adminId])
     }
     updateoder(oder){
-        return DAO('update orders set oderId=?,oderDate=?,manaId=?',[oder.oderId,oder.oderDate,oder.manaId])
+        return DAO('update orders set orderDate=?,manaId=? where orderId=?',[oder.orderDate,oder.manaId,oder.orderId])
     }
 }
 module.exports= new DB();

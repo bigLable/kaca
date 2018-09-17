@@ -3,9 +3,9 @@ const form=require('formidable');
 module.exports={
     getoder:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.getoder(ctx.query.aId)
+        let jsondata=await DB.getoder(ctx.query.oderId)
         ctx.set('content-type','application/json');
-        ctx.body=jsondata;
+        ctx.body={code:200,message:'查询地址 ok',data:jsondata};
     },
     getAlloder:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
@@ -13,7 +13,12 @@ module.exports={
         let  jsondata=await DB.getAlloder();
         console.log(jsondata)
         ctx.set('content-type','application/json');
-        ctx.body=jsondata;
+
+        try{
+            ctx.body={code:200,message:'查询地址 ok',data:jsondata};
+        }catch (err) {
+            ctx.body={code:500,message:err.message,data:[]};
+        }
     },
     addoder:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');

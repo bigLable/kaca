@@ -1,5 +1,5 @@
 const DB=require('../model/addressDAO');
-const form=require('formidable');
+
 module.exports={
     getadres:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
@@ -20,19 +20,17 @@ module.exports={
     },
     addadres:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
+        ctx.set('content-type','application/json');
              let Revalue={
-                 aId:ctx.query.aId,
-                 aId:ctx.query.aId,
-                 aId:ctx.query.aId,
-                 aId:ctx.query.aId
+                 aName:ctx.query.aName,
+                 cId:ctx.query.cId,
+                 manaId:ctx.query.manaId
              }
+             console.log('到达此处'+Revalue)
 
-            DB.addadres(Revalue,(data)=>{
-                ctx.body={code:200,message:'add ok',data:{}}
-            });
-
-
-    },
+            let jsondata =await DB.addadres(Revalue);
+        ctx.body={code:200,message:'add ok',data:jsondata}
+      },
     deleteadres:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
         let jsondata=await DB.delete(ctx.query.aId);
@@ -41,7 +39,13 @@ module.exports={
     },
     updateadres:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.update(ctx.query.aId);
+        let REV={
+            aId:ctx.query.aId,
+            aName:ctx.query.aName,
+            cId:ctx.query.cId,
+            manaId:ctx.query.manaId
+        }
+        let jsondata=await DB.update(REV);
         ctx.set('content-type','application/json');
          ctx.body={code:200,message:'delete ok',data:jsondata}
     }

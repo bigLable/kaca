@@ -1,10 +1,18 @@
-const worksDAO=require('../model/worksDAO')
+
+const worksDuu=require('../controller/worksDuu')
 const router = require('koa-router')()
 router.prefix('/works')
 
-router.get('/',async(ctx)=>{
-    let jsondata=worksDAO.getworks();
-    ctx.render('wrokslist',{title:'作品信息表',data:jsondata})
+router.get('/getworks',async function (ctx, next) {
+    await worksDuu.getworks(ctx)
 })
-
+router.get('/getOneWorks',async function (ctx, next) {
+    await worksDuu.getOneWorks(ctx)
+})
+router.get('/addWorks',async function (ctx, next) {
+    await worksDuu.addWorks(ctx)
+})
+router.get('/delete',async function (ctx, next) {
+    await worksDuu.delete(ctx)
+})
 module.exports=router

@@ -1,26 +1,26 @@
 const DAO =require('./DAO')
 class DB{
 
-    cgqGetid(cgqId){
-        return DAO('select * from cgq where cgqId=?',[cgqId])
+    cgqGetid(id){
+        return DAO('select * from cgq where cgqId=?',[id])
     }
-    cgqtype(cgqType){
-        return DAO('select * from cgq where cgqType=?',[cgqType])
+    cgqtype(id){
+        return DAO('select * from cgq where cgqType=?',[id])
     }
-    cgqsize(cgqSize){
-        return DAO('select * from cgq where cgqSize=?',[cgqSize])
+    cgqsize(id){
+        return DAO('select * from cgq where cgqSize=?',[id])
     }
-    cgqmax(cgqMax){
-        return DAO('select * from cgq where cgqMax=?',[cgqMax])
+    cgqmax(id){
+        return DAO('select * from cgq where cgqMax=?',[id])
     }
-    cgqd(cgqD){
-        return DAO('select * from cgq where cgqD=?',[cgqD])
+    cgqd(id){
+        return DAO('select * from cgq where cgqD=?',[id])
     }
-    cgqj(cgqJ){
-        return DAO('select * from cgq where cgqJ=?',[cgqJ])
+    cgqj(id){
+        return DAO('select * from cgq where cgqJ=?',[id])
     }
-    cgqtime(cgqTime){
-        return DAO('select * from cgq where cgqTime=?',[cgqTime])
+    cgqtime(id){
+        return DAO('select * from cgq where cgqTime=?',[id])
     }
 }
 module.exports= new DB();

@@ -1,34 +1,27 @@
 const router=require('koa-router')()
-const cgqInfo=require('../controller/cgqDuu')
+const cgqDuu=require('../controller/cgqDuu')
+router.prefix('/cgq')
 
-router.prefix('/users')
-router.get('cgqGetid',async (ctx,next)=>{
-    let jsondata=cgqInfo.cgqGetid(ctx);
-    ctx.render('',{title: '详细信息',data:jsondata})
+router.get('cgqGetid',async function (ctx, next) {
+    await cgqDuu.cgqGetid(ctx)
 })
-router.get('/cgqtype',async (ctx,next)=>{
-    let jsondata=cgqInfo.cgqtype(ctx);
-    ctx.render('',{title: '详细信息',data:jsondata})
+router.get('/cgqtype',async function (ctx, next) {
+    await cgqDuu.cgqtype(ctx)
 })
-router.get('/cgqsize',async (ctx,next)=>{
-    let jsondata=cgqInfo.cgqsize(ctx);
-    ctx.render('',{title: '详细信息',data:jsondata})
+router.get('/cgqsize',async function (ctx, next) {
+    await cgqDuu.cgqsize(ctx)
 })
-router.get('/cgqmax',async (ctx,next)=>{
-    let jsondata=cgqInfo.cgqmax(ctx);
-    ctx.render('',{title: '详细信息',data:jsondata})
+router.get('/cgqmax',async function (ctx, next) {
+    await cgqDuu.cgqmax(ctx)
 })
-router.get('/cgqd',async (ctx,next)=>{
-    let jsondata=cgqInfo.cgqd(ctx);
-    ctx.render('',{title: '详细信息',data:jsondata})
+router.get('/cgqd',async function (ctx, next) {
+    await cgqDuu.cgqd(ctx)
 })
-router.get('/cgqj',async (ctx,next)=>{
-    let jsondata=cgqInfo.cgqj(ctx);
-    ctx.render('',{title: '详细信息',data:jsondata})
+router.get('/cgqj',async function (ctx, next) {
+    await cgqDuu.cgqj(ctx)
 })
-router.get('/cgqtime',async (ctx,next)=>{
-    let jsondata=cgqInfo.cgqtime(ctx);
-    ctx.render('',{title: '详细信息',data:jsondata})
+router.get('/cgqtime',async function (ctx, next) {
+    await cgqDuu.cgqtime(ctx)
 })
 
 module.exports=router;

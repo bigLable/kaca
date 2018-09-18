@@ -4,7 +4,7 @@ class DB {
         return DAO('select * from admins where adminId=?',[adminId])
     }
     getAllBacktage(){
-        return DAO('select * from admins',[])
+        return DAO('select * from addresses,admins,buinesses,cgq,comments,customers,management,orderdetails,orders,shop,trolleys,types,wroks,wx where addresses.manaId=admins.manaId=buinesses.manaId=cgq.manaId=comments.manaId=customers.manaId=management.manaId=orderdetails.manaId=orders.manaId=shop.manaId=trolleys.manaId=types.manaId=wroks.manaId=wx.manaId',[])
     }
     addBacktage(adminer){
         return DAO('insert into admins values(?,?,?,?,?,?)',[adminer.adminId,adminer.adminName,adminer.adminsPwd,adminer.adminsPic,adminer.adminsEmail,adminer.adminsPhoneNum])

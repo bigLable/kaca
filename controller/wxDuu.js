@@ -3,7 +3,7 @@ const form=require('formidable');
 module.exports={
     wxGetid:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.wxGetid(ctx.wxId)
+        let jsondata=await DB.wxGetid(ctx.query.id)
         ctx.set('content-type','application/json');
         ctx.body=jsondata;
     },

@@ -13,5 +13,11 @@ module.exports={
         ctx.set('content-type','application/json');
         ctx.body=jsondata;
     },
+    shopGprice:async (ctx)=>{
+        ctx.set('Access-Control-Allow-Origin','*');
+        let jsondata=await DB.shopGprice(ctx);
+        ctx.set('content-type','application/json');
+        ctx.body=jsondata;
+    },
 
 }

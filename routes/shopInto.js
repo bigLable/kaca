@@ -9,5 +9,9 @@ router.get('/shopGetpara',async (ctx,next)=>{
     let jsondata=shopInfo.shopGetpara(ctx);
     ctx.render('',{title: '商品类别表',data:jsondata})
 })
+router.get('/shopGprice',async (ctx,next)=>{
+    let jsondata=shopInfo.shopGprice(ctx);
+    ctx.render('',{title: '商品价格表',data:jsondata})
+})
 
 module.exports=router;

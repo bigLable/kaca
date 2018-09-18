@@ -1,15 +1,15 @@
-const DB=require('../model/wxInfo');
+const DB=require('../model/shopInfo');
 const form=require('formidable');
 module.exports={
-    wxGetid:async (ctx)=>{
+    shopGetid:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.wxGetid(ctx.query.aId)
+        let jsondata=await DB.shopGetid(ctx.query.aId);
         ctx.set('content-type','application/json');
         ctx.body=jsondata;
     },
-    wxGetFrom:async (ctx)=>{
+    shopGetpara:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.wxGetFrom(ctx.query.aId)
+        let jsondata=await DB.shopGetpara(ctx.query.aId);
         ctx.set('content-type','application/json');
         ctx.body=jsondata;
     },

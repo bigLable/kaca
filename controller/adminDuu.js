@@ -7,15 +7,15 @@ module.exports={
         ctx.set('Access-Control-Allow-Origin','*');
         let jsondata=await DB.getadmin(ctx.query.adminId)
         ctx.set('content-type','application/json');
-        ctx.body=jsondata;
+        ctx.body={code:200,message:'get ok',data:jsondata}
     },
     getAlladmin:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        console.log('start')
+
         let  jsondata=await DB.getAlladmin();
         console.log(jsondata)
         ctx.set('content-type','application/json');
-        ctx.body=jsondata;
+        ctx.body={code:200,message:'update ok',data:jsondata}
     },
     addadmin:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
@@ -63,7 +63,16 @@ module.exports={
     },
     updateadmin:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.updateadmin(ctx.query.adminId);
+        let Revalue={
+            adminId:ctx.request.body.adminId,
+            adminName:ctx.request.body.adminName,
+            adminsPwd:ctx.request.body.adminsPwd,
+            adminsPic:ctx.request.body.adminsPic,
+            adminsEmail:ctx.request.body.adminsEmail,
+            adminsPhoneNum:ctx.request.body.adminsPhoneNum,
+            manaId:ctx.request.body.manaId
+        }
+        let jsondata=await DB.updateadmin(Revalue);
         ctx.set('content-type','application/json');
         ctx.body={code:200,message:'ok',data:jsondata}
     }

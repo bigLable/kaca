@@ -1,40 +1,38 @@
-const DB=require('../model/worksDAO');
+const DB=require('../model/commentsDAO');
 const form=require('formidable');
 module.exports= {
-    getworks: async (ctx) => {
+    getcomments: async (ctx) => {
         ctx.set('Access-Control-Allow-Origin', '*');
-        let jsondata = await DB.getworks()
+        let jsondata = await DB.getcomments()
         ctx.set('content-type', 'application/json');
         ctx.body = jsondata;
     },
-    getOneWorks:async (ctx) => {
+    getOneComments:async (ctx) => {
         ctx.set('Access-Control-Allow-Origin', '*');
-        let jsondata = await DB.getOneWorks(ctx.query.id)
+        let jsondata = await DB. getOneComments(ctx.query.id)
         ctx.set('content-type', 'application/json');
         ctx.body = jsondata;
     },
-    addWorks:async(ctx)=>{
+    addcomments:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
         let form= new form.IncomingForm();
         await  form.parse(ctx,(err,fileds)=>{
-            let Revalue={
-                worksId:fileds.value1,
-                worksauthor:fileds.value2,
-                worksDescribe:fileds.value3,
-                worksEquipment:fileds.value4,
-                worksPageview:fileds.value5,
-                worksPoint:fileds.value6,
-                worksDate:fileds.value7
+            let Revalue= {
+                commentsId: fileds.value1,
+                commentsContent: fileds.value2,
+                commentsDate: fileds.value3,
+                worksId: fileds.value4,
+                cId: fileds.value5,
             }
-            DB. addWorks(Revalue,(data)=>{
+            DB. addcomments(Revalue,(data)=>{
                 ctx.body={code:200,message:'add ok',data:{}}
             });
 
         })
     },
-    deleteworks:async(ctx)=>{
+    deletecomments:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.deleteworks(ctx.query.id);
+        let jsondata=await DB.deletecomments(ctx.query.id);
         ctx.set('content-type','application/json');
         ctx.body={code:200,message:'delete ok',data:jsondata}
     }

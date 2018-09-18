@@ -7,6 +7,7 @@ router.get('/getstage',async function (ctx, next) {
 })
 router.post('/getAllstage',async function (ctx, next) {
     console.log('start!')
+
     await Backtage.getAllBacktage(ctx)
 })
 router.post('/addstage', async function (ctx, next) {

@@ -96,7 +96,7 @@ router.get('/updateoderdetail',async function (ctx, next) {
 router.get('/getcar',async function (ctx, next) {
     await carDuu.getcar(ctx)
 })
-router.post('/getAllcar',async function (ctx, next) {
+router.get('/getAllcar',async function (ctx, next) {
     console.log('start!')
     await carDuu.getAllcar(ctx)
 })

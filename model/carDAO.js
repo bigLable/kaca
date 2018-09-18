@@ -1,19 +1,15 @@
 const DAO=require('../model/DAO');
 class DB {
-    getcar(trolleyId){
-        return DAO('select * from admins where adminId=?',[trolleyId])
-    }
+
     getAllcar(){
-        return DAO('select * from admins',[])
+        return DAO('select SUM(e1.shopPrice) FROM shop e1 LEFT JOIN orders e2  on e1.shopId=e2.orderId ',[])
     }
-    addcar(trolleyId){
-        return DAO('insert into admins values(?,?,?,?,?,?)',[trolleyId.adminId,adminer.adminName,adminer.adminsPwd,adminer.adminsPic,adminer.adminsEmail,adminer.adminsPhoneNum])
+    addcar(trolley){
+        return DAO('insert into trolleys(trolleytotal,customers_cId,orderId,manaId) values(?,?,?,?)',[trolley.trolleytotal,trolley.customers_cId,trolley.orderId,trolley.manaId])
     }
-    deletecar(adminer){
-        return DAO('delete admins where aId=?',[adminer.adminId])
+    deletecar(trolleyId){
+        return DAO('delete from trolleys where trolleyId=?',[trolleyId])
     }
-    updatecar(adminer){
-        return DAO('update admins set adminName=?,adminsPwd=?,adminsPic=?,adminsEmail=?,adminsPhoneNum=? where aId=?',[adminer.adminName,adminer.adminsPwd,adminer.adminsPic,adminer.adminsEmail,adminer.adminsPhoneNum,adminer.adminId])
-    }
+
 }
 module.exports= new DB();

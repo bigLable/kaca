@@ -1,8 +1,11 @@
-const DAO =require('./DAO')
+const DAO=require('../model/DAO');
 class DB{
 
-    wxGetid(wxId){
-        return DAO('select * from wx where wxId=?',[wxId])
+    wxGetid(id){
+        return DAO('select * from wx where wxId=?',[id])
+    }
+    wxGetFrom(wxFrom){
+        return DAO('select * from wx where wxFrom=?',[wxFrom])
     }
 
 }

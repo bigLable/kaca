@@ -9,13 +9,13 @@ module.exports={
     },
     shopGetpara:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.shopGetpara(ctx.shopPara);
+        let jsondata=await DB.shopGetpara(ctx.query.id);
         ctx.set('content-type','application/json');
         ctx.body=jsondata;
     },
     shopGprice:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.shopGprice(ctx.shopPrice);
+        let jsondata=await DB.shopGprice(ctx.query.id);
         ctx.set('content-type','application/json');
         ctx.body=jsondata;
     },

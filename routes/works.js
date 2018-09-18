@@ -10,11 +10,14 @@ router.get('/getworks',async function (ctx, next) {
 router.get('/getOneWorks',async function (ctx, next) {
     await worksDuu.getOneWorks(ctx)
 })
-router.get('/addWorks',async function (ctx, next) {
+router.post('/addWorks',async function (ctx, next) {
     await worksDuu.addWorks(ctx)
 })
 router.get('/deleteworks',async function (ctx, next) {
     await worksDuu.deleteworks(ctx)
+})
+router.post('/updateworks',async function (ctx, next) {
+    await worksDuu.updateworks(ctx)
 })
 
 //评论的增删改查
@@ -24,7 +27,7 @@ router.get('/getcomments',async function (ctx, next) {
 router.get('/getOneComments',async function (ctx, next) {
     await commentsDuu.getOneComments(ctx)
 })
-router.get('/addcomments',async function (ctx, next) {
+router.post('/addcomments',async function (ctx, next) {
     await commentsDuu.addcomments(ctx)
 })
 router.get('/deletecomments',async function (ctx, next) {

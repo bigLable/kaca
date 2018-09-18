@@ -9,7 +9,7 @@ module.exports={
     },
     wxGetFrom:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.wxGetFrom(ctx.wxFrom)
+        let jsondata=await DB.wxGetFrom(ctx.query.id)
         ctx.set('content-type','application/json');
         ctx.body=jsondata;
     },

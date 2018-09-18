@@ -9,6 +9,10 @@ const logger = require('koa-logger')
 const index = require('./routes/index')
 const users = require('./routes/users')
 const works = require('./routes/works')
+const wxInto = require('./routes/wxInto')
+const cgqInto=require('./routes/cgqInto')
+const shopInto=require('./routes/shopInto')
+const shopcInto = require('./routes/shopcinto')
 const shoppingCart = require('./routes/shoppingCart')
 // error handler
 onerror(app)
@@ -40,6 +44,10 @@ app.use(async (ctx, next) => {
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 app.use(works.routes(), works.allowedMethods())
+app.use(cgqInto.routes(), cgqInto.allowedMethods())
+app.use(shopcInto.routes(), shopcInto.allowedMethods())
+app.use(shopInto.routes(), shopInto.allowedMethods())
+app.use(wxInto.routes(), wxInto.allowedMethods())
 app.use(shoppingCart.routes(), shoppingCart.allowedMethods())
 // error-handling
 app.on('error', (err, ctx) => {

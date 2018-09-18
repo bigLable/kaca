@@ -1,14 +1,14 @@
 const DAO =require('./DAO')
 class DB{
 
-    shopcid(shopCId){
-        return DAO('select * from shopcomments where shopCId=?',[shopCId])
+    shopcid(id){
+        return DAO('select * from shopcomments where shopCId=?',[id])
     }
-    shopccontent(shopCContent){
-        return DAO('select * from shopcomments where shopCContent=?',[shopCContent])
+    shopccontent(id){
+        return DAO('select * from shopcomments where shopCContent=?',[id])
     }
-    shopcdate(shopCDate){
-        return DAO('select * from shopcomments where shopCDate=?',[shopCDate])
+    shopcdate(id){
+        return DAO('select * from shopcomments where shopCDate=?',[id])
     }
 
 }

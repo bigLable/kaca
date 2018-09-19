@@ -4,7 +4,9 @@ class DB {
         return DAO('select * from trolle  ',[detailId])
     }
     getAlloderdetail(){
-        return DAO('select * from orders',[])
+        return DAO('select det.OderID,det.detailCount,det.Adressid,det.payway,det.detailPrice from  orderdetails det  LEFT JOIN  orders o on det.OderID=o.OderID INNER JOIN adress adre on ' +
+            'det.Adressid=adre.Adressid\n' +
+            ' ',[])
     }
     addoderdetail(oder){
         return DAO('insert into orders values(?,?,?)',[oder.oderId,oder.oderDate,oder.manaId])

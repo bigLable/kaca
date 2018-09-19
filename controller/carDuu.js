@@ -37,7 +37,7 @@ module.exports={
     },
     deletecar:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.deletecar(ctx.query.trolleyId);
+        let jsondata=await DB.deletecar(ctx.query.carId);
 
         ctx.body={code:200,message:'delete ok',data:jsondata}
     },

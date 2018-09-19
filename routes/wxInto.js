@@ -7,4 +7,5 @@ router.get('/wxGetid',async function (ctx, next) {
 router.get('/wxGetFrom',async function (ctx, next) {
     await wxDuu.wxGetFrom(ctx)
 })
+
 module.exports=router;

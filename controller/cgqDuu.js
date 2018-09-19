@@ -7,9 +7,9 @@ module.exports={
         ctx.set('content-type','application/json');
         ctx.body=jsondata;
     },
-    cgqj:async (ctx)=>{
+    cgqpoint:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.cgqj(ctx.query.id);
+        let jsondata=await DB.cgqpoint(ctx.query.id);
         ctx.set('content-type','application/json');
         ctx.body=jsondata;
     },
@@ -31,9 +31,9 @@ module.exports={
         ctx.set('content-type','application/json');
         ctx.body=jsondata;
     },
-    cgqd:async (ctx)=>{
+    cgqwight:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.cgqd(ctx.query.id);
+        let jsondata=await DB.cgqwight(ctx.query.id);
         ctx.set('content-type','application/json');
         ctx.body=jsondata;
     },

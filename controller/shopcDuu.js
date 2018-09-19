@@ -1,4 +1,4 @@
-const DB=require('../model/wxInfo');
+const DB=require('../model/shopCDAO');
 const form=require('formidable');
 module.exports={
     shopcid:async (ctx)=>{
@@ -16,6 +16,18 @@ module.exports={
     shopcdate:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
         let jsondata=await DB.shopcdate(ctx.query.id)
+        ctx.set('content-type','application/json');
+        ctx.body=jsondata;
+    },
+    shoplabel:async (ctx)=>{
+        ctx.set('Access-Control-Allow-Origin','*');
+        let jsondata=await DB.shoplabel(ctx.query.id)
+        ctx.set('content-type','application/json');
+        ctx.body=jsondata;
+    },
+    username:async (ctx)=>{
+        ctx.set('Access-Control-Allow-Origin','*');
+        let jsondata=await DB.username(ctx.query.id)
         ctx.set('content-type','application/json');
         ctx.body=jsondata;
     },

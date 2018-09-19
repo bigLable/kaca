@@ -1,4 +1,4 @@
-
+const likeDuu=require('../controller/likeDuu')
 const worksDuu=require('../controller/worksDuu')
 const commentsDuu=require('../controller/commentsDuu')
 const router = require('koa-router')()
@@ -32,5 +32,12 @@ router.post('/addcomments',async function (ctx, next) {
 })
 router.get('/deletecomments',async function (ctx, next) {
     await commentsDuu.deletecomments(ctx)
+})
+//点赞的增删
+router.post('/addlike',async function (ctx, next) {
+    await likeDuu.addlike(ctx)
+})
+router.post('/deletelike',async function (ctx, next) {
+    await likeDuu.deletelike(ctx)
 })
 module.exports=router

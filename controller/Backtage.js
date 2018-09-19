@@ -13,7 +13,7 @@ module.exports={
         let  jsondata=await DB.getAllBacktage();
         console.log(jsondata)
         ctx.set('content-type','application/json');
-        ctx.body=jsondata;
+        ctx.body={code:200,message:'查询 ok',data:{}}
     },
     addBacktage:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');

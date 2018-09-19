@@ -1,17 +1,21 @@
 const router=require('koa-router')()
-const wxInfo=require('../controller/shopcDuu')
+const shopcDuu=require('../controller/shopcDuu')
+router.prefix('/shopc')
 
-router.get('/shopcid',async (ctx,next)=>{
-    let jsondata=wxInfo.shopcid(ctx);
-    ctx.render('',{title: '',data:jsondata})
+router.get('/shopcid',async function (ctx, next) {
+    await shopcDuu.shopcid(ctx)
 })
-router.get('/shopccontent',async (ctx,next)=>{
-    let jsondata=wxInfo.shopccontent(ctx);
-    ctx.render('',{title: '',data:jsondata})
+router.get('/shopccontent',async function (ctx, next) {
+    await shopcDuu.shopccontent(ctx)
 })
-router.get('/shopcdate',async (ctx,next)=>{
-    let jsondata=wxInfo.shopcdate(ctx);
-    ctx.render('',{title: '',data:jsondata})
+router.get('/shopcdate',async function (ctx, next) {
+    await shopcDuu.shopcdate(ctx)
+})
+router.get('/shoplabel',async function (ctx, next) {
+    await shopcDuu.shoplabel(ctx)
+})
+router.get('/username',async function (ctx, next) {
+    await shopcDuu.username(ctx)
 })
 
 module.exports=router;

@@ -4,8 +4,8 @@ class DB{
     wxGetid(id){
         return DAO('select * from wx where wxId=?',[id])
     }
-    wxGetFrom(wxFrom){
-        return DAO('select * from wx where wxFrom=?',[wxFrom])
+    wxGetFrom(id){
+        return DAO('select * from wx where wxFrom=?',[id])
     }
 
 }

@@ -7,6 +7,7 @@ const adminDuu=require('../controller/adminDuu')
 const oder=require('../controller/oderDuu')
 const oderdetail=require('../controller/oderdetailDuu')
 const carDuu=require('../controller/carDuu')
+const Backtage=require('../controller/Backtage')
 router.prefix('/shoppingCart')
 
 /*
@@ -68,6 +69,11 @@ router.get('/deleteoder',async function (ctx, next) {
 })
 router.get('/updateoder',async function (ctx, next) {
     await oder.updateoder(ctx)
+})
+/*
+* 针对后台*/
+router.get('/getbacktage',async function (ctx, next) {
+    await Backtage.getAllBacktage(ctx)
 })
 /*
 * 针对订单--详情--操作*/

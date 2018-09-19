@@ -14,11 +14,11 @@ router.get('/cgqsize',async function (ctx, next) {
 router.get('/cgqmax',async function (ctx, next) {
     await cgqDuu.cgqmax(ctx)
 })
-router.get('/cgqd',async function (ctx, next) {
-    await cgqDuu.cgqd(ctx)
+router.get('/cgqwight',async function (ctx, next) {
+    await cgqDuu.cgqwight(ctx)
 })
-router.get('/cgqj',async function (ctx, next) {
-    await cgqDuu.cgqj(ctx)
+router.get('/cgqpoint',async function (ctx, next) {
+    await cgqDuu.cgqpoint(ctx)
 })
 router.get('/cgqtime',async function (ctx, next) {
     await cgqDuu.cgqtime(ctx)

@@ -10,4 +10,7 @@ router.get('/shopGetpara',async function (ctx, next) {
 router.get('/shopGprice',async function (ctx, next) {
     await shopDuu.shopGprice(ctx)
 })
+router.get('/shopXImg',async function (ctx, next) {
+    await shopDuu.shopXImg(ctx)
+})
 module.exports=router;

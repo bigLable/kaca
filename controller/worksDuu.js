@@ -21,8 +21,6 @@ module.exports = {
         works.worksauthor = ctx.request.body.worksauthor;
         works.worksDescribe = ctx.request.body.worksDescribe;
         works.worksEquipment = ctx.request.body.worksEquipment;
-        works.worksPageview = ctx.request.body.worksPageview;
-        works.worksPoint = ctx.request.body.worksPoint;
         works.worksDate = ctx.request.body.worksDate;
         let jsondata =  await DB.addWorks(works);
         ctx.body = {code: 200, message: 'message', data: jsondata}
@@ -34,11 +32,9 @@ module.exports = {
         work.worksauthor = ctx.request.body.worksauthor;
         work.worksDescribe = ctx.request.body.worksDescribe;
         work.worksEquipment = ctx.request.body.worksEquipment;
-        work.worksPageview = ctx.request.body.worksPageview;
-        work.worksPoint = ctx.request.body.worksPoint;
         work.worksDate = ctx.request.body.worksDate;
         work.worksId = ctx.request.body.worksId;
-        let jsondata = DB.updateworks(work);
+        let jsondata =await DB.updateworks(work);
         ctx.body = {code: 200, message: 'message', data: jsondata}
 
 

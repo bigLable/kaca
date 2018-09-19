@@ -11,5 +11,11 @@ router.get('/shopccontent',async function (ctx, next) {
 router.get('/shopcdate',async function (ctx, next) {
     await shopcDuu.shopcdate(ctx)
 })
+router.get('/shoplabel',async function (ctx, next) {
+    await shopcDuu.shoplabel(ctx)
+})
+router.get('/username',async function (ctx, next) {
+    await shopcDuu.username(ctx)
+})
 
 module.exports=router;

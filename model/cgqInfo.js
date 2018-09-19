@@ -13,11 +13,11 @@ class DB{
     cgqmax(id){
         return DAO('select * from cgq where cgqMax=?',[id])
     }
-    cgqd(id){
-        return DAO('select * from cgq where cgqD=?',[id])
+    cgqwight(id){
+        return DAO('select * from cgq where cgqweight=?',[id])
     }
-    cgqj(id){
-        return DAO('select * from cgq where cgqJ=?',[id])
+    cgqpoint(id){
+        return DAO('select * from cgq where cgqpoint=?',[id])
     }
     cgqtime(id){
         return DAO('select * from cgq where cgqTime=?',[id])

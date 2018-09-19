@@ -3,7 +3,7 @@ const form=require('formidable');
 module.exports={
     shopGetid:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.shopGetid(ctx.shopId);
+        let jsondata=await DB.shopGetid(ctx.query.id);
         ctx.set('content-type','application/json');
         ctx.body=jsondata;
     },
@@ -16,6 +16,12 @@ module.exports={
     shopGprice:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
         let jsondata=await DB.shopGprice(ctx.query.id);
+        ctx.set('content-type','application/json');
+        ctx.body=jsondata;
+    },
+    shopXImg:async (ctx)=>{
+        ctx.set('Access-Control-Allow-Origin','*');
+        let jsondata=await DB.shopXImg(ctx.query.id);
         ctx.set('content-type','application/json');
         ctx.body=jsondata;
     },

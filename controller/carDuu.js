@@ -20,23 +20,25 @@ module.exports={
         // let  jsondata=await DB.getAlladres();
         // ctx.set('content-type','application/json');
         // await ctx.body=jsondata;
-        let form= new form.IncomingForm();
-        await  form.parse(ctx,(err,fileds)=>{
+        // let form= new form.IncomingForm();
+        // await  form.parse(ctx,(err,fileds)=>{
             let Revalue={
-                aId:fileds.value1,
-                aName:fileds.value2,
-                customers_cId:fileds.value3
+                trolleytotal:ctx.request.body.trolleytotal,
+                shopcId:ctx.request.body.shopcId,
+                orderId:ctx.request.body.orderId,
+                manaId:ctx.request.body.manaId
             }
-            DB.addcar(Revalue,(data)=>{
-                ctx.body={code:200,message:'delete ok',data:{}}
-            });
+            DB.addcar(Revalue);
+        ctx.set('content-type','application/json')
+        ctx.body={code:200,message:'add ok',data:{}}
 
-        })
+
+        // })
     },
     deletecar:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
         let jsondata=await DB.deletecar(ctx.query.trolleyId);
-        ctx.set('content-type','application/json');
+
         ctx.body={code:200,message:'delete ok',data:jsondata}
     },
     updatecar:async(ctx)=>{

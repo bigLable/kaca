@@ -9,7 +9,7 @@ module.exports={
     },
     cgqpoint:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.cgqpoint(ctx.query.id);
+        let jsondata=await DB.cgqpoint(XQctx.query.id);
         ctx.set('content-type','application/json');
         ctx.body=jsondata;
     },

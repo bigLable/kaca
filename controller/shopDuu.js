@@ -3,7 +3,7 @@ const form=require('formidable');
 module.exports={
     shopGetid:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.shopGetid(ctx.shopId);
+        let jsondata=await DB.shopGetid(ctx.query.id);
         ctx.set('content-type','application/json');
         ctx.body=jsondata;
     },

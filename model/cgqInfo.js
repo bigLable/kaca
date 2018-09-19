@@ -14,7 +14,7 @@ class DB{
         return DAO('select * from cgq where cgqMax=?',[id])
     }
     cgqwight(id){
-        return DAO('select * from cgq where cgqwight=?',[id])
+        return DAO('select * from cgq where cgqweight=?',[id])
     }
     cgqpoint(id){
         return DAO('select * from cgq where cgqpoint=?',[id])

@@ -19,5 +19,11 @@ module.exports={
         ctx.set('content-type','application/json');
         ctx.body=jsondata;
     },
+    shopXImg:async (ctx)=>{
+        ctx.set('Access-Control-Allow-Origin','*');
+        let jsondata=await DB.shopXImg(ctx.query.id);
+        ctx.set('content-type','application/json');
+        ctx.body=jsondata;
+    },
 
 }

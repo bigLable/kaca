@@ -14,7 +14,7 @@ class DB{
         return DAO('select * from shopcomments where shoplabel=?',[id])
     }
     username(id){
-        return DAO('select * from shopcoments where username=?',[id])
+        return DAO('select * from shopcomments where username=?',[id])
     }
 }
 module.exports= new DB();

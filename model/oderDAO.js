@@ -1,19 +1,19 @@
 const DAO=require('../model/DAO');
 class DB {
-    getoder(orderId){
-        return DAO('select * from orders where orderId=?',[orderId])
+    getoder(OderID){
+        return DAO('select * from orders where OderID=?',[OderID])
     }
     getAlloder(){
         return DAO('select * from orders',[])
     }
     addoder(orde){
-        return DAO('insert into orders(adminName,adminsPwd,adminspic,manaId) values(?,?)',[orde.orderDate,orde.manaId])
+        return DAO('insert into orders(Manangementid,OderID,UserID,oderdata) values(?,?,?,?)',[orde.Manangementid,orde.OderID,orde.UserID,orde.oderdata])
     }
     deleteoder(adminId){
-        return DAO('delete from admins where adminId=?',[adminId])
+        return DAO('delete from orders where OderID=?',[adminId])
     }
     updateoder(oder){
-        return DAO('update orders set orderDate=?,manaId=? where orderId=?',[oder.orderDate,oder.manaId,oder.orderId])
+        return DAO('update orders set Manangementid=?,UserID=?,oderdata=? where OderID=?',[oder.Manangementid,oder.UserID,oder.oderdata,oder.OderID])
     }
 }
 module.exports= new DB();

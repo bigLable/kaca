@@ -2,9 +2,9 @@ const DB=require('../model/oderDAO');
 module.exports={
     getoder:async (ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.getoder(ctx.query.oderId)
+        let jsondata=await DB.getoder(ctx.query.OderID)
         ctx.set('content-type','application/json');
-        ctx.body={code:200,message:'查询地址 ok',data:jsondata};
+        ctx.body={code:200,message:'特定查询 ok',data:jsondata};
     },
     getAlloder:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
@@ -14,7 +14,7 @@ module.exports={
         ctx.set('content-type','application/json');
 
         try{
-            ctx.body={code:200,message:'查询地址 ok',data:jsondata};
+            ctx.body={code:200,message:'查询 ok',data:jsondata};
         }catch (err) {
             ctx.body={code:500,message:err.message,data:[]};
         }
@@ -22,8 +22,10 @@ module.exports={
     addoder:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
         let REV={
-            orderDate:ctx.body.orderDate,
-            manaId:ctx.body.manaId
+             OderID:ctx.request.body.OderID,
+            Manangementid:ctx.request.body.Manangementid,
+            UserID:ctx.request.body.UserID,
+            oderdata:ctx.request.body.oderdata
         }
 
         console.log(REV)
@@ -33,7 +35,7 @@ module.exports={
     },
     deleteoder:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.deleteoder(ctx.query.orderId);
+        let jsondata=await DB.deleteoder(ctx.query.OderID);
         ctx.set('content-type','application/json');
         ctx.body={code:200,message:'delete ok',data:jsondata}
     },
@@ -41,10 +43,12 @@ module.exports={
         ctx.set('Access-Control-Allow-Origin','*');
         ctx.set('Access-Control-Allow-Origin','*');
         let REV={
-            orderDate:ctx.query.orderDate,
-            manaId:ctx.query.manaId,
-            orderId:ctx.query.orderId
+            Manangementid:ctx.query.Manangementid,
+            UserID:ctx.query.UserID,
+            oderdata:ctx.query.oderdata,
+            OderID:ctx.query.OderID
         }
+        console.log(REV)
         let jsondata=await DB.updateoder(REV)
         ctx.set('content-type','application/json');
         ctx.body={code:200,message:'update ok',data:jsondata}

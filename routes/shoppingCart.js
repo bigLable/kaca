@@ -80,7 +80,7 @@ router.get('/getbacktage',async function (ctx, next) {
 router.get('/getoderdetail',async function (ctx, next) {
     await oderdetail.getoderdetail(ctx)
 })
-router.post('/getAlloderdetail',async function (ctx, next) {
+router.get('/getAlloderdetail',async function (ctx, next) {
     console.log('start!')
     await oderdetail.getAlloderdetail(ctx)
 })

@@ -1,39 +1,27 @@
 const DB=require('../model/carDAO');
 const form=require('formidable');
 module.exports={
-    getcar:async (ctx)=>{
+
+    addcar:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let jsondata=await DB.getcar(ctx.query.trolleyId)
-        ctx.set('content-type','application/json');
-        ctx.body={code:200,message:'ok',data:jsondata};
-    },
+        ctx.set('content-type','application/json')
+        ctx.session.shop=[];
+
+       for(let i=0;i<ctx.session.shop.length;i++){
+           ctx.session.shop[i]=[{shopID:ctx.query.shopID,countNum:ctx.query.countNum}]
+       }
+       ctx.body={code:200,message:'add ok',data:{}}
+   },
     getAllcar:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
         console.log('start')
-        let  jsondata=await DB.getAllcar();
-        console.log(jsondata)
-        ctx.set('content-type','application/json');
-        ctx.body={code:200,message:'ok',data:jsondata}
-    },
-    addcar:async(ctx)=>{
-        ctx.set('Access-Control-Allow-Origin','*');
-        // let  jsondata=await DB.getAlladres();
-        // ctx.set('content-type','application/json');
-        // await ctx.body=jsondata;
-        // let form= new form.IncomingForm();
-        // await  form.parse(ctx,(err,fileds)=>{
-            let Revalue={
-                trolleytotal:ctx.request.body.trolleytotal,
-                shopcId:ctx.request.body.shopcId,
-                orderId:ctx.request.body.orderId,
-                manaId:ctx.request.body.manaId
-            }
-            DB.addcar(Revalue);
-        ctx.set('content-type','application/json')
-        ctx.body={code:200,message:'add ok',data:{}}
+        for(let i=0;i<ctx.session.shop.length;i++){
+            let  jsondata=await DB.getcarshop(ctx.session.shop[i].shopID);
+            console.log(jsondata)
+            ctx.set('content-type','application/json');
+            ctx.body={code:200,message:'ok',data:jsondata,countNum:ctx.session.shop.countNum}
+        }
 
-
-        // })
     },
     deletecar:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');

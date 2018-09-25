@@ -21,14 +21,10 @@ module.exports={
     addadres:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
         ctx.set('content-type','application/json');
-             let Revalue={
-                 adrename:ctx.query.adrename,
-                 Adressid:ctx.query.Adressid,
 
-             }
-             console.log('到达此处'+Revalue)
+             console.log('到达此处'+ctx.query.adrename)
 
-            let jsondata =await DB.addadres(Revalue);
+            let jsondata =await DB.addadres(ctx.query.adrename);
         ctx.body={code:200,message:'add ok',data:jsondata}
       },
     deleteadres:async(ctx)=>{
@@ -37,14 +33,5 @@ module.exports={
         ctx.set('content-type','application/json');
         ctx.body={code:200,message:'delete ok',data:jsondata}
     },
-    updateadres:async(ctx)=>{
-        ctx.set('Access-Control-Allow-Origin','*');
-        let REV={
-            adrename:ctx.query.adrename,
-            Adressid:ctx.query.Adressid,
-        }
-        let jsondata=await DB.update(REV);
-        ctx.set('content-type','application/json');
-         ctx.body={code:200,message:'update ok',data:jsondata}
-    }
+
 }

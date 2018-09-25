@@ -1,5 +1,4 @@
 const DAO=require('../model/DAO');
-
 class DB{
     getUsers(){
         //获取全部用户信息的方法
@@ -12,17 +11,12 @@ class DB{
     //添加一个用户信息的方法
     addUsers(users){
         return DAO('insert into  user values(?,?,?,?,?,?,?)',
-            [users.UserID,users.cName,users.cPwd,users.cEmail,users.cPhoneNum,users.cPic,users.cRegisterDate])
-    }
-    //删除一个用户信息
-    deleteUsers (id){
-        return DAO('delete from user where UserID=?',[id])
+            [users.UserID,users.userName,users.userPwd,users.userEmail,users.userPhoneNum,users.userPic,users.userRegisterDate])
     }
     //修改一个用户信息
     updateUsers(user){
-        return DAO('update user set cName=?,cPwd=?,cEmail=?,cPhoneNum=?,cPic=?,cRegisterDate=? where UserID=?,',
-            [users.cName,users.cPwd,users.cEmail,users.cPhoneNum,users.cPic,users.cRegisterDate,users.UserID])
+        return DAO('update user set userName=?,userPwd=?,userEmail=?,userPhoneNum=?,userPic=?,userRegisterDate=? where userID=?,',
+            [users.userName,users.userPwd,users.userEmail,users.userPhoneNum,users.userPic,users.userRegisterDate,users.userID])
     }
-
 }
 module.exports= new DB();

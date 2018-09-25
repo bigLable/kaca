@@ -19,9 +19,6 @@ router.get('/getOneUser',async function (ctx, next) {
 router.post('/addUsers',async function (ctx, next) {
     await userDuu.addUsers(ctx)
 })
-router.get('/deleteUsers',async function (ctx, next) {
-    await userDuu.deleteUsers(ctx)
-})
 router.post('/updateUsers',async function (ctx, next) {
     await userDuu.updateUsers(ctx)
 })

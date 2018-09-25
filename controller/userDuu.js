@@ -16,35 +16,29 @@ module.exports = {
     addUsers: async (ctx, next) => {
         console.log(ctx.request.body)
         let user = {};
-        user.UserID = ctx.request.body.UserID;
-        user.cName = ctx.request.body.cName;
-        user.cPwd = ctx.request.body.cPwd;
-        user.cEmail = ctx.request.body.cEmail;
-        user.cPhoneNum = ctx.request.body.cPhoneNum;
-        user.cPic = ctx.request.body.cPic;
-        user.cRegisterDate = ctx.request.body.cRegisterDate;
+        user.userID = ctx.request.body.userID;
+        user.userName = ctx.request.body.userName;
+        user.userPwd = ctx.request.body.userPwd;
+        user.userEmail = ctx.request.body.userEmail;
+        user.userPhoneNum = ctx.request.body.userPhoneNum;
+        user.userPic = ctx.requesusert.body.userPic;
+        user.userRegisterDate = ctx.request.body.userRegisterDate;
         let jsondata =  await DB.addUsers(user);
         ctx.body = {code: 200, message: 'message', data: jsondata}
     },
     updateUsers: async (ctx, next) => {
         console.log(ctx.request.body)
         let user = {};
-        user.cName = ctx.request.body.cName;
-        user.cPwd = ctx.request.body.cPwd;
-        user.cEmail = ctx.request.body.cEmail;
-        user.cPhoneNum = ctx.request.body.cPhoneNum;
-        user.cPic = ctx.request.body.cPic;
-        user.cRegisterDate = ctx.request.body.cRegisterDate;
-        user.UserID = ctx.request.body.UserID;
+        user.userName = ctx.request.body.userName;
+        user.userPwd = ctx.request.body.userPwd;
+        user.userEmail = ctx.request.body.userEmail;
+        user.userPhoneNum = ctx.request.body.userPhoneNum;
+        user.userPic = ctx.request.body.userPic;
+        user.userRegisterDate = ctx.request.body.userRegisterDate;
+        user.userID = ctx.request.body.userID;
         let jsondata =await DB.updateUsers(user);
         ctx.body = {code: 200, message: 'message', data: jsondata}
 
 
-    },
-    deleteUsers: async (ctx) => {
-        ctx.set('Access-Control-Allow-Origin', '*');
-        let jsondata = await DB.deleteUsers(ctx.query.id);
-        ctx.set('content-type', 'application/json');
-        ctx.body = {code: 200, message: 'delete ok', data: jsondata}
     }
 }

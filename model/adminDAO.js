@@ -1,20 +1,19 @@
-
 const DAO=require('../model/DAO');
 class DB {
     getadmin(adminId){
         return DAO('select * from admins where adminId=?',[adminId])
     }
-    getAlladmin(){
+    getoneadmin(){
         return DAO('select * from admins',[])
     }
-    addadmin(adminer){
-        return DAO('insert into admins values(?,?,?,?,?,?)',[adminer.adminName,adminer.adminsPwd,adminer.adminsPic,adminer.adminsEmail,adminer.adminsPhoneNum,adminer.manaId])
+    addadmin(admin){
+        return DAO('insert into admins values(?,?,?)',[admin.adminId,admin.adminName,admin.adminPwd])
     }
     deleteadmin(adminId){
         return DAO('delete from admins where adminId=?',[adminId])
     }
-    updateadmin(adminer){
-        return DAO('update admins set adminName=?,adminsPwd=?,adminsPic=?,adminsEmail=?,adminsPhoneNum=?,manaId=? where adminId=?',[adminer.adminName,adminer.adminsPwd,adminer.adminsPic,adminer.adminsEmail,adminer.adminsPhoneNum,adminer.manaId,adminer.adminId])
+    updateadmin(admin){
+        return DAO('update admins set adminName=?,adminPwd=?,adminId=? where adminId=?',[admin.adminName,admin.adminPwd,admin.adminId])
     }
 }
 module.exports= new DB();

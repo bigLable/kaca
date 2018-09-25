@@ -1,8 +1,8 @@
 const DAO=require('../model/DAO');
 class DB {
 
-    getAllcar(){
-        return DAO('select s.*,c.* from shop s LEFT JOIN car c ON s.ShopID=c.carId ',[])
+    getcarshop(shopid){
+        return DAO('call getCarshop(?)',[shopid])
     }
 
     deletecar(trolleyId){

@@ -38,19 +38,5 @@ module.exports={
         let jsondata=await DB.deleteoder(ctx.query.OderID);
         ctx.set('content-type','application/json');
         ctx.body={code:200,message:'delete ok',data:jsondata}
-    },
-    updateoder:async(ctx)=>{
-        ctx.set('Access-Control-Allow-Origin','*');
-        ctx.set('Access-Control-Allow-Origin','*');
-        let REV={
-            Manangementid:ctx.query.Manangementid,
-            UserID:ctx.query.UserID,
-            oderdata:ctx.query.oderdata,
-            OderID:ctx.query.OderID
-        }
-        console.log(REV)
-        let jsondata=await DB.updateoder(REV)
-        ctx.set('content-type','application/json');
-        ctx.body={code:200,message:'update ok',data:jsondata}
     }
 }

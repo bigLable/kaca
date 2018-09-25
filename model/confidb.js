@@ -3,6 +3,6 @@ const confidb={
     port:3306,
     user:'root',
     password:'root',
-    database:'mysqljob'
+    database:'newsql'
 }
 module.exports=confidb;

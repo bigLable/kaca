@@ -4,7 +4,7 @@ class DB {
         return DAO('select * from orders where OderID=?',[OderID])
     }
     getAlloder(){
-        return DAO('select * from orders',[])
+        return DAO('call getAlloder()',[])
     }
     addoder(orde){
         return DAO('insert into orders(Manangementid,OderID,UserID,oderdata) values(?,?,?,?)',[orde.Manangementid,orde.OderID,orde.UserID,orde.oderdata])

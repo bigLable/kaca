@@ -1,7 +1,7 @@
 const router = require('koa-router')()
 const hotDuu=require('../controller/hotDuu')
 const newgoodsDuu=require('../controller/newgoodsDuu')
-const hotworksDuu=require('../controller/hotworksDuu')
+const worksDuu=require('../controller/worksDuu')
 
 router.get('/', async (ctx, next) => {
   await ctx.render('index', {
@@ -25,8 +25,8 @@ router.get('/gethot',async function (ctx, next) {
 router.get('/getnew',async function (ctx, next) {
     await newgoodsDuu.getnew(ctx)
 })
-router.get('/gethotworks',async function (ctx, next) {
-    await hotworksDuu.gethotworks(ctx)
+router.get('/getnewworks',async function (ctx, next) {
+    await worksDuu.getnewworks(ctx)
 })
 
 

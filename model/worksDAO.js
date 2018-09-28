@@ -23,6 +23,10 @@ class DB{
         return DAO('update works set worksPic=?,worksauthor=?,worksDescribe=?,worksEquipment=?,worksDate=? where worksId=?',
             [work.worksPic,work.worksauthor,work.worksDescribe,work.worksEquipment,work.worksDate,work.worksId])
     }
+    getnewworks() {
+        //获取最新作品信息的方法
+        return DAO('select worksPic,worksauthor,worksDescribe,worksEquipment from works order by WorksId  desc limit 0,6)', [])
+    }
 
 }
 module.exports= new DB();

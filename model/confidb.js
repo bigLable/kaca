@@ -5,3 +5,4 @@ const confidb={
     password:'root',
     database:'newsql'
 }
+module.exports=confidb;

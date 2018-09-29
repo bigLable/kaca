@@ -6,8 +6,6 @@ module.exports = {
         console.log(ctx.request.body)
         let like = {};
         like.likeId = ctx.request.body.likeId;
-        like.worksId = ctx.request.body.worksId;
-        like.usedId = ctx.request.body.usedId;
         like.statu = ctx.request.body.statu;
         let jsondata =  await DB.addlike(like);
         ctx.body = {code: 200, message: 'message', data: jsondata}

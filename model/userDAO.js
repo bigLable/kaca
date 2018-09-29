@@ -6,16 +6,16 @@ class DB{
     }
     //获取一个用户信息的方法
     getOneUser(id){
-        return DAO('select * from user where UserID=?',[id])
+        return DAO('select * from user where userId=?',[id])
     }
     //添加一个用户信息的方法
     addUsers(users){
         return DAO('insert into  user values(?,?,?,?,?,?,?)',
-            [users.UserID,users.userName,users.userPwd,users.userEmail,users.userPhoneNum,users.userPic,users.userRegisterDate])
+            [users.userID,users.userName,users.userPwd,users.userEmail,users.userPhoneNum,users.userPic,users.userRegisterDate])
     }
     //修改一个用户信息
     updateUsers(user){
-        return DAO('update user set userName=?,userPwd=?,userEmail=?,userPhoneNum=?,userPic=?,userRegisterDate=? where userID=?,',
+        return DAO('update user set userName=?,userPwd=?,userEmail=?,userPhoneNum=?,userPic=?,userRegisterDate=? where userId=?,',
             [users.userName,users.userPwd,users.userEmail,users.userPhoneNum,users.userPic,users.userRegisterDate,users.userID])
     }
 }

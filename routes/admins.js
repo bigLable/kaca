@@ -22,4 +22,7 @@ router.post('/addadmin',async function (ctx, next) {
 router.post('/updateadmin',async function (ctx, next) {
     await adminDuu.updateadmin(ctx)
 })
+router.post('/deleteadmin',async function (ctx, next) {
+    await adminDuu.deleteadmin(ctx)
+})
 module.exports = router;

@@ -44,5 +44,13 @@ module.exports = {
         let jsondata = await DB.deleteworks(ctx.query.id);
         ctx.set('content-type', 'application/json');
         ctx.body = {code: 200, message: 'delete ok', data: jsondata}
+    },
+
+    getnewworks: async (ctx) => {
+        ctx.set('Access-Control-Allow-Origin', '*');
+        let jsondata = await DB.getnewworks()
+        ctx.set('content-type', 'application/json');
+        ctx.body = jsondata;
     }
+
 }

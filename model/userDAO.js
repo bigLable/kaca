@@ -2,20 +2,20 @@ const DAO=require('../model/DAO');
 class DB{
     getUsers(){
         //获取全部用户信息的方法
-        return DAO('select * from user',[])
+        return DAO('select * from users',[])
     }
     //获取一个用户信息的方法
     getOneUser(id){
-        return DAO('select * from user where userId=?',[id])
+        return DAO('select * from users where userID=?',[id])
     }
     //添加一个用户信息的方法
     addUsers(users){
-        return DAO('insert into  user values(?,?,?,?,?,?,?)',
+        return DAO('insert into  users values(?,?,?,?,?,?,?)',
             [users.userID,users.userName,users.userPwd,users.userEmail,users.userPhoneNum,users.userPic,users.userRegisterDate])
     }
     //修改一个用户信息
-    updateUsers(user){
-        return DAO('update user set userName=?,userPwd=?,userEmail=?,userPhoneNum=?,userPic=?,userRegisterDate=? where userId=?,',
+    updateUsers(users){
+        return DAO('update users set userName=?,userPwd=?,userEmail=?,userPhoneNum=?,userPic=?,userRegisterDate=? where userID=?',
             [users.userName,users.userPwd,users.userEmail,users.userPhoneNum,users.userPic,users.userRegisterDate,users.userID])
     }
 }

@@ -19,6 +19,8 @@ module.exports = {
         admin.adminId = ctx.request.body.adminId;
         admin.adminName = ctx.request.body.adminName;
         admin.adminPwd = ctx.request.body.adminPwd;
+        admin.adminPhone = ctx.request.body.adminPhone;
+        admin.adminRegidate = ctx.request.body.adminRegidate;
         let jsondata =  await DB.addadmin(admin);
         ctx.body = {code: 200, message: 'message', data: jsondata}
     },
@@ -28,6 +30,8 @@ module.exports = {
         admin.adminId = ctx.request.body.adminId;
         admin.adminName = ctx.request.body.adminName;
         admin.adminPwd = ctx.request.body.adminPwd;
+        admin.adminPhone = ctx.request.body.adminPhone;
+        admin.adminRegidate = ctx.request.body.adminRegidate;
         let jsondata =  await DB.updateadmin(admin);
         ctx.body = {code: 200, message: 'message', data: jsondata}
     },

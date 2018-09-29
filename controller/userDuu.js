@@ -16,7 +16,7 @@ module.exports = {
     addUsers: async (ctx, next) => {
         console.log(ctx.request.body)
         let user = {};
-        user.userID = ctx.request.body.userID;
+        user.userId = ctx.request.body.userId;
         user.userName = ctx.request.body.userName;
         user.userPwd = ctx.request.body.userPwd;
         user.userEmail = ctx.request.body.userEmail;
@@ -35,7 +35,7 @@ module.exports = {
         user.userPhoneNum = ctx.request.body.userPhoneNum;
         user.userPic = ctx.request.body.userPic;
         user.userRegisterDate = ctx.request.body.userRegisterDate;
-        user.userID = ctx.request.body.userID;
+        user.userId = ctx.request.body.userId;
         let jsondata =await DB.updateUsers(user);
         ctx.body = {code: 200, message: 'message', data: jsondata}
 

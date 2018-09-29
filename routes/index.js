@@ -28,6 +28,17 @@ router.get('/getnew',async function (ctx, next) {
 router.get('/getnewworks',async function (ctx, next) {
     await worksDuu.getnewworks(ctx)
 })
+router.post('/addgoods',async function (ctx, next) {
+    await newgoodsDuu. addgoods(ctx)
+})
+router.post('/updategoods',async function (ctx, next) {
+    await newgoodsDuu.updategoods(ctx)
+})
+router.get('/deletegoods',async function (ctx, next) {
+    await newgoodsDuu.deletegoods(ctx)
+})
+
+
 
 
 

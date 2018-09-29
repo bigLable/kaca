@@ -13,6 +13,9 @@ class DB{
     shopXImg(id){
         return DAO('select * from shop where shopXImg=?',[id])
     }
+    shopbuy(buy){
+        return DAO('call proc_shop_transInfo(?,?,?,?) ',[buy.p_shopName,buy.p_shopType,buy.p_transType,buy.p_transNum,])
+    }
 
 }
 module.exports= new DB();

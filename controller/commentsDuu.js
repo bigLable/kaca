@@ -1,5 +1,4 @@
 const DB = require('../model/commentsDAO');
-
 const form = require('formidable');
 module.exports = {
     getcomments: async (ctx) => {
@@ -22,8 +21,6 @@ module.exports = {
         comments.commentsDate=ctx.request.body.commentsDate;
         let jsondata = DB.addcomments(comments);
         ctx.body = {code: 200, message: 'message', data: jsondata}
-
-
     },
     deletecomments: async (ctx) => {
         ctx.set('Access-Control-Allow-Origin', '*');

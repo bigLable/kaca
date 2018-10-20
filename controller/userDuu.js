@@ -10,7 +10,7 @@ module.exports = {
     getOneUser: async (ctx) => {
         ctx.set('Access-Control-Allow-Origin', '*');
         let user = {};
-        user.userID = ctx.request.body.userID;
+        user.userEmail = ctx.request.body.userEmail;
         user.userPwd = ctx.request.body.userPwd;
         let jsondata =  await DB. getOneUser(user);
         ctx.body = {code: 200, message: 'message', data: jsondata}

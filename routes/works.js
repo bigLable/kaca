@@ -1,6 +1,7 @@
 const likeDuu=require('../controller/likeDuu')
 const worksDuu=require('../controller/worksDuu')
 const commentsDuu=require('../controller/commentsDuu')
+const hotDuu=require('../controller/hotDuu')
 const router = require('koa-router')()
 router.prefix('/works')
 //作品的增删改查
@@ -18,6 +19,15 @@ router.get('/deleteworks',async function (ctx, next) {
 })
 router.post('/updateworks',async function (ctx, next) {
     await worksDuu.updateworks(ctx)
+})
+router.get('/newworks',async function (ctx, next) {
+    await hotDuu.newworks(ctx)
+})
+router.get('/recworks',async function (ctx, next) {
+    await hotDuu.recworks(ctx)
+})
+router.get('/hotworks',async function (ctx, next) {
+    await hotDuu.hotworks(ctx)
 })
 
 //评论的增删改查

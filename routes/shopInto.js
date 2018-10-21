@@ -1,6 +1,9 @@
 const router=require('koa-router')()
 const shopDuu=require('../controller/shopDuu')
 router.prefix('/shop')
+router.get('/allshop',async function (ctx, next) {
+    await shopDuu.allshop(ctx)
+})
 router.get('/shopGetid',async function (ctx, next) {
     await shopDuu.shopGetid(ctx)
 })

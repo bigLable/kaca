@@ -2,7 +2,7 @@ const router=require('koa-router')()
 const cgqDuu=require('../controller/cgqDuu')
 router.prefix('/cgq')
 
-router.get('cgqGetid',async function (ctx, next) {
+router.get('/cgqGetid',async function (ctx, next) {
     await cgqDuu.cgqGetid(ctx)
 })
 router.get('/cgqtype',async function (ctx, next) {

@@ -1,6 +1,12 @@
 const DB = require('../model/shopInfo');
 const form = require('formidable');
 module.exports = {
+    allshop: async (ctx) => {
+        ctx.set('Access-Control-Allow-Origin', '*');
+        let jsondata = await DB.allshop();
+        ctx.set('content-type', 'application/json');
+        ctx.body = jsondata;
+    },
     shopGetid: async (ctx) => {
         ctx.set('Access-Control-Allow-Origin', '*');
         let jsondata = await DB.shopGetid(ctx.query.id);

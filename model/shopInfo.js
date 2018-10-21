@@ -1,6 +1,8 @@
 const DAO =require('./DAO')
 class DB{
-
+    allshop(){
+        return DAO('select * from shop ',[])
+    }
     shopGetid(id){
         return DAO('select * from shop where shopId=?',[id])
     }

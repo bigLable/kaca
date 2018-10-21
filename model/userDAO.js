@@ -6,7 +6,7 @@ class DB{
     }
     //获取一个用户信息的方法
     getOneUser(id){
-        return DAO('select * from users where userID=? and userPwd=?',[id.userID,id.userPwd])
+        return DAO('select * from users where userEmail=? and userPwd=?',[id.userEmail,id.userPwd])
     }
     //添加一个用户信息的方法
     addUsers(users){

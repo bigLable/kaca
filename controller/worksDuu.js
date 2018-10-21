@@ -7,6 +7,12 @@ module.exports = {
         ctx.set('content-type', 'application/json');
         ctx.body = jsondata;
     },
+    getpic: async (ctx) => {
+        ctx.set('Access-Control-Allow-Origin', '*');
+        let jsondata = await DB.getpic()
+        ctx.set('content-type', 'application/json');
+        ctx.body = jsondata;
+    },
     getOneWorks: async (ctx) => {
         ctx.set('Access-Control-Allow-Origin', '*');
         let jsondata = await DB.getOneWorks(ctx.query.id)

@@ -37,6 +37,9 @@ router.post('/updategoods',async function (ctx, next) {
 router.get('/deletegoods',async function (ctx, next) {
     await newgoodsDuu.deletegoods(ctx)
 })
+router.get('/getpic',async function (ctx, next) {
+    await worksDuu.getpic(ctx)
+})
 
 
 

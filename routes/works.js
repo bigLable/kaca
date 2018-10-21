@@ -43,6 +43,10 @@ router.post('/addcomments',async function (ctx, next) {
 router.get('/deletecomments',async function (ctx, next) {
     await commentsDuu.deletecomments(ctx)
 })
+router.get('/getcom',async function (ctx, next) {
+    await commentsDuu.getcom(ctx)
+})
+
 //点赞的增删
 router.post('/addlike',async function (ctx, next) {
     await likeDuu.addlike(ctx)

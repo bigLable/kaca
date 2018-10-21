@@ -25,7 +25,7 @@ class DB{
     }
     getnewworks() {
         //获取最新作品信息的方法
-        return DAO('select worksId,worksPic,worksauthor,worksDescribe,worksEquipment from works  where worksDate = (select max(worksDate) from works )', [])
+        return DAO('select worksId,worksPic,worksauthor,worksDescribe,worksEquipment,worksDate from works  order by worksDate  desc limit 0,3', [])
     }
 
 }

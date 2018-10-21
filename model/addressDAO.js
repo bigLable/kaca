@@ -4,7 +4,7 @@ class DB {
         return DAO('select * from adress where Adressid=?',[aId])
     }
     getAlladres(){
-        return DAO('call getAlladress ',[])
+        return DAO('call getAlladress() ',[])
     }
     addadres(adrename){
         return DAO('call addadres(?)',[adrename])

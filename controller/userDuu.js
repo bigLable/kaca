@@ -10,20 +10,26 @@ module.exports = {
     getOneUser: async (ctx) => {
         ctx.set('Access-Control-Allow-Origin', '*');
         let user = {};
+
         user.userEmail = ctx.request.body.userEmail;
         user.userPwd = ctx.request.body.userPwd;
         let jsondata =  await DB. getOneUser(user);
         ctx.body = {code: 200, message: 'message', data: jsondata}
     },
     addUsers: async (ctx, next) => {
+        ctx.set('Access-Control-Allow-Origin','*');
+        ctx.set('content-type','application/json')
+
+
         console.log(ctx.request.body)
         let user = {};
-        user.userID = ctx.request.body.userID;
+        // user.userID = ctx.request.body.userID;
         user.userName = ctx.request.body.userName;
         user.userPwd = ctx.request.body.userPwd;
         user.userEmail = ctx.request.body.userEmail;
-        user.userRegisterDate = ctx.request.body.userRegisterDate;
+        // user.userRegisterDate = ctx.request.body.userRegisterDate;
         let jsondata =  await DB.addUsers(user);
+
         ctx.body = {code: 200, message: 'message', data: jsondata}
     },
     updateUsers: async (ctx, next) => {

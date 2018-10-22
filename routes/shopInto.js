@@ -19,4 +19,7 @@ router.get('/shopXImg',async function (ctx, next) {
 router.post('/shopbuy',async function (ctx, next) {
     await shopDuu.shopbuy(ctx)
 })
+router.get('/allIMG',async function (ctx, next) {
+    await shopDuu.allIMG(ctx)
+})
 module.exports=router;

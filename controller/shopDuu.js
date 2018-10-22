@@ -40,6 +40,13 @@ module.exports = {
         buy.p_transNum = ctx.request.body.p_transNum;
         let jsondata = await DB.shopbuy(buy);
         ctx.body = {code: 200, message: 'message', data: jsondata}
-    }
+    },
+
+allIMG: async (ctx) => {
+    ctx.set('Access-Control-Allow-Origin', '*');
+    let jsondata = await DB.allIMG();
+    ctx.set('content-type', 'application/json');
+    ctx.body = jsondata;
+},
 
 }

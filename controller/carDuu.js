@@ -18,12 +18,27 @@ module.exports={
         // for(let i=0;i<ctx.session.shop.length;i++){
             // let  jsondata=await DB.getcarshop(ctx.session.shop[i].shopID);
         ctx.set('content-type','application/json');
-        let  jsondata=await DB.getcarshop(1);
+        let  jsondata=await DB.getcarshop(10001);
             console.log(jsondata)
 
             // ctx.body={code:200,message:'ok',data:jsondata,countNum:ctx.session.shop.countNum}
         ctx.body={code:200,message:'ok',data:jsondata}
         // }
+        // ctx.set('Access-Control-Allow-Origin','*');
+        //         // console.log('start')
+        //         // // for(let i=0;i<ctx.session.shop.length;i++){
+        //         // ctx.session.shopid=[]
+        //         // let newShop=[]
+        //         // ctx.session.shopid.push(ctx.query.ShopID)
+        //         // for(let i=0;i<ctx.session.shopid.length;i++){
+        //         //     let  jsondata=await DB.getcarshop(ctx.session.ShopID);
+        //         //     console.log(jsondata)
+        //         //     newShop.push(jsondata)
+        //         // }
+        //         // ctx.set('content-type','application/json');
+        //         // ctx.body={code:200,message:'ok',data:newShop}
+        //         //
+        //         // // }
 
     },
     deletecar:async(ctx)=>{

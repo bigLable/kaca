@@ -21,15 +21,10 @@ module.exports={
     },
     addoder:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let REV={
-             OderID:ctx.request.body.OderID,
-            Manangementid:ctx.request.body.Manangementid,
-            UserID:ctx.request.body.UserID,
-            oderdata:ctx.request.body.oderdata
-        }
+        let orde=ctx.request.body.userId
 
-        console.log(REV)
-          let jsondata=await  DB.addoder(REV);
+
+          let jsondata=await  DB.addoder(orde);
           ctx.body={code:200,message:'add ok',data:jsondata}
 
     },

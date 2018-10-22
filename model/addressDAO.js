@@ -4,7 +4,7 @@ class DB {
         return DAO('call getadress(?)',[aId])
     }
     getAlladres(){
-        return DAO('call getAlladress ',[])
+        return DAO('call getAlladress() ',[])
     }
     addadres(adrename){
         return DAO('call addadres(?)',[adrename])

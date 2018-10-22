@@ -7,6 +7,12 @@ module.exports = {
         ctx.set('content-type', 'application/json');
         ctx.body = jsondata;
     },
+    getpic: async (ctx) => {
+        ctx.set('Access-Control-Allow-Origin', '*');
+        let jsondata = await DB.getpic()
+        ctx.set('content-type', 'application/json');
+        ctx.body = jsondata;
+    },
     getOneWorks: async (ctx) => {
         ctx.set('Access-Control-Allow-Origin', '*');
         let jsondata = await DB.getOneWorks(ctx.query.id)
@@ -14,6 +20,8 @@ module.exports = {
         ctx.body = jsondata;
     },
     addWorks: async (ctx, next) => {
+        ctx.set('Access-Control-Allow-Origin','*');
+        ctx.set('content-type','application/json');
         console.log(ctx.request.body)
         let works = {};
         works.worksId = ctx.request.body.worksId;
@@ -26,6 +34,8 @@ module.exports = {
         ctx.body = {code: 200, message: 'message', data: jsondata}
     },
     updateworks: async (ctx, next) => {
+        ctx.set('Access-Control-Allow-Origin','*');
+        ctx.set('content-type','application/json');
         console.log(ctx.request.body)
         let work = {};
         work.worksPic = ctx.request.body.worksPic;

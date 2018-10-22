@@ -15,12 +15,15 @@ module.exports={
     getAllcar:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
         console.log('start')
-        for(let i=0;i<ctx.session.shop.length;i++){
-            let  jsondata=await DB.getcarshop(ctx.session.shop[i].shopID);
+        // for(let i=0;i<ctx.session.shop.length;i++){
+            // let  jsondata=await DB.getcarshop(ctx.session.shop[i].shopID);
+        ctx.set('content-type','application/json');
+        let  jsondata=await DB.getcarshop(1);
             console.log(jsondata)
-            ctx.set('content-type','application/json');
-            ctx.body={code:200,message:'ok',data:jsondata,countNum:ctx.session.shop.countNum}
-        }
+
+            // ctx.body={code:200,message:'ok',data:jsondata,countNum:ctx.session.shop.countNum}
+        ctx.body={code:200,message:'ok',data:jsondata}
+        // }
 
     },
     deletecar:async(ctx)=>{

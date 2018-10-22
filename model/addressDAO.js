@@ -1,7 +1,7 @@
 const DAO=require('../model/DAO');
 class DB {
     getadres(aId){
-        return DAO('select * from adress where Adressid=?',[aId])
+        return DAO('call getadress(?)',[aId])
     }
     getAlladres(){
         return DAO('call getAlladress() ',[])

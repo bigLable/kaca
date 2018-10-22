@@ -9,12 +9,13 @@ module.exports = {
     },
     getOneUser: async (ctx) => {
         ctx.set('Access-Control-Allow-Origin', '*');
-        let user = {};
-
-        user.userEmail = ctx.request.body.userEmail;
-        user.userPwd = ctx.request.body.userPwd;
-        let jsondata =  await DB. getOneUser(user);
-        ctx.body = {code: 200, message: 'message', data: jsondata}
+        // let user = {};
+        ctx.set('content-type','application/json')
+        // user.userEmail = ctx.request.userEmail;
+         let Email = ctx.request.query.userEmail;
+        // user.userPwd = ctx.request.userPwd;
+        let jsondata =  await DB.getOneUser(Email);
+        ctx.body = {code: 200, message: 'message',data:jsondata}
     },
     addUsers: async (ctx, next) => {
         ctx.set('Access-Control-Allow-Origin','*');

@@ -24,11 +24,10 @@ module.exports = {
 
         console.log(ctx.request.body)
         let user = {};
-        // user.userID = ctx.request.body.userID;
         user.userName = ctx.request.body.userName;
         user.userPwd = ctx.request.body.userPwd;
         user.userEmail = ctx.request.body.userEmail;
-        // user.userRegisterDate = ctx.request.body.userRegisterDate;
+        user.userPhoneNum = ctx.request.body.userPhoneNum;
         let jsondata =  await DB.addUsers(user);
 
         ctx.body = {code: 200, message: 'message', data: jsondata}

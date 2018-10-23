@@ -3,11 +3,11 @@ class DB {
     getadres(aId){
         return DAO('call getadress(?)',[aId])
     }
-    getAlladres(){
-        return DAO('call getAlladress() ',[])
+    getAlladres(id){
+        return DAO('call getAlladre(?) ',[id])
     }
-    addadres(adrename){
-        return DAO('call addadres(?)',[adrename])
+    addadres(adrename,userId){
+        return DAO('call addadres(?,?)',[adrename,userId])
     }
     delete(aId){
         return DAO('call deleAdress(?)',[aId])

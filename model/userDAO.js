@@ -5,8 +5,8 @@ class DB{
         return DAO('select * from users',[])
     }
     //获取一个用户信息的方法
-    getOneUser(id){
-        return DAO('select * from users where userEmail=? ',[id])
+    getOneUser(userEmail){
+        return DAO('select * from users where userEmail=?',[userEmail])
     }
     //添加一个用户信息的方法
     addUsers(users){
@@ -15,8 +15,8 @@ class DB{
     }
     //修改一个用户信息
     updateUsers(users){
-        return DAO('update users set userName=?,userPwd=?,userEmail=?,userPhoneNum=?,userPic=?,userRegisterDate=? where userID=?',
-            [users.userName,users.userPwd,users.userEmail,users.userPhoneNum,users.userPic,users.userRegisterDate,users.userID])
+        return DAO('update users set userName=?,userPwd=?,userEmail=?,userSex=?,userPhoneNum=?,userPic=?,userRegisterDate=? where userID=?',
+            [users.userName,users.userPwd,users.userEmail,users.userSex,users.userPhoneNum,users.userPic,users.userRegisterDate,users.userID])
     }
 }
 module.exports= new DB();

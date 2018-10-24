@@ -13,7 +13,7 @@ router.get('/bar', function (ctx, next) {
 router.get('/getUsers',async function (ctx, next) {
     await userDuu.getUsers(ctx)
 })
-router.get('/getOneUser',async function (ctx, next) {
+router.post('/getOneUser',async function (ctx, next) {
     await userDuu.getOneUser(ctx)
 })
 router.post('/addUsers',async function (ctx, next) {

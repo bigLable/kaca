@@ -7,21 +7,22 @@ module.exports = {
         ctx.set('content-type', 'application/json');
         ctx.body = jsondata;
     },
-    getOneUser: async (ctx) => {
+    getOneUser: async (ctx,next) => {
         ctx.set('Access-Control-Allow-Origin', '*');
-        // let user = {};
-        ctx.set('content-type','application/json')
-        // user.userEmail = ctx.request.userEmail;
-         let Email = ctx.request.query.userEmail;
-        // user.userPwd = ctx.request.userPwd;
-        let jsondata =  await DB.getOneUser(Email);
-        ctx.body = {code: 200, message: 'message',data:jsondata}
+        ctx.set('content-type','application/json');
+        console.log(ctx.request.body)
+        let user ={};
+        user.userEmail = ctx.request.body.userEmail;
+        console.log(user.userEmail);
+        // user.userPwd = ctx.request.body.userPwd;
+        let jsondata =  await DB.getOneUser(user.userEmail);
+        console.log(jsondata)
+        ctx.body ={"code":200,data:jsondata}
+
     },
     addUsers: async (ctx, next) => {
         ctx.set('Access-Control-Allow-Origin','*');
         ctx.set('content-type','application/json')
-
-
         console.log(ctx.request.body)
         let user = {};
         user.userName = ctx.request.body.userName;
@@ -38,13 +39,12 @@ module.exports = {
         user.userName = ctx.request.body.userName;
         user.userPwd = ctx.request.body.userPwd;
         user.userEmail = ctx.request.body.userEmail;
+        user.userSex = ctx.request.body.userSex;
         user.userPhoneNum = ctx.request.body.userPhoneNum;
         user.userPic = ctx.request.body.userPic;
         user.userRegisterDate = ctx.request.body.userRegisterDate;
         user.userID = ctx.request.body.userID;
         let jsondata =await DB.updateUsers(user);
         ctx.body = {code: 200, message: 'message', data: jsondata}
-
-
     }
 }

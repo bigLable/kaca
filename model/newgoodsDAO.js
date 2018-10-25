@@ -3,7 +3,7 @@ const DAO=require('../model/DAO');
 class DB {
     getnew() {
         //获取最新商品的方法
-        return DAO('select shopID,shopName,shopImg,shopPrice from shop order by ShopID  desc limit 0,9', [])
+        return DAO('select shopID,shopName,shopImg,shopPrice,shopPara from shop order by ShopID  desc limit 0,9', [])
     }
     //添加一个商品信息的方法
     addgoods(goods){

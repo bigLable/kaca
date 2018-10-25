@@ -3,7 +3,7 @@ const DAO=require('../model/DAO');
 class DB {
     gethot() {
         //获取热门商品信息的方法
-        return DAO('select shopID, shopName,shopImg,shopPrice from shop order by shopPrice desc limit 0,9', [])
+        return DAO('select shopID, shopName,shopImg,shopPrice,shopPara from shop order by shopPrice desc limit 0,4', [])
     }
    newworks() {
         //获取最新作品信息的方法

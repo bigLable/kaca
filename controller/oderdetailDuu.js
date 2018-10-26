@@ -4,10 +4,10 @@ module.exports={
     getAlloderdetail:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
         console.log('start')
-        let  jsondata=await DB.getAlloderdetail();
+        let  jsondata=await DB.getAlloderdetail(ctx.query.userID);
         console.log(jsondata)
         ctx.set('content-type','application/json');
-        ctx.body=jsondata;
+        ctx.body={code:200,message:'delete ok',data:jsondata}
     },
     addoderdetail:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');

@@ -3,8 +3,8 @@ class DB {
     getoderdetail(detailId){
         return DAO('select * from trolle  ',[detailId])
     }
-    getAlloderdetail(){
-        return DAO('call getDetailIfo()',[])
+    getAlloderdetail(user){
+        return DAO('call getOnegood(?)',[user])
     }
     addoderdetail(oder){
         return DAO('insert into orders values(?,?,?)',[oder.oderId,oder.oderDate,oder.manaId])

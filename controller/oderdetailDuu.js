@@ -3,11 +3,12 @@ const form=require('formidable');
 module.exports={
     getAlloderdetail:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
+        ctx.set('content-type','application/json');
         console.log('start')
         let  jsondata=await DB.getAlloderdetail(ctx.query.userID);
         console.log(jsondata)
-        ctx.set('content-type','application/json');
-        ctx.body={code:200,message:'delete ok',data:jsondata}
+
+        ctx.body={code:200,message:'查询ok',data:jsondata}
     },
     addoderdetail:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');

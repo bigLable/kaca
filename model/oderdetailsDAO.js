@@ -4,7 +4,7 @@ class DB {
         return DAO('select * from trolle  ',[detailId])
     }
     getAlloderdetail(user){
-        return DAO('call getOnegood(?)',[user])
+        return DAO('call getOneuserInfo(?)',[user])
     }
     addoderdetail(oder){
         return DAO('insert into orders values(?,?,?)',[oder.oderId,oder.oderDate,oder.manaId])

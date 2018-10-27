@@ -6,8 +6,8 @@ class DB {
     getAlloder(){
         return DAO('call getAlloder()',[])
     }
-    addoder(orde){
-        return DAO('call oderadd(?)',[orde])
+    addoder(oder){
+        return DAO('call oderadd(?,?,?,?)',[oder.userId,oder.shopId,oder.shopnum,oder.adre])
     }
     deleteoder(adminId){
         return DAO('delete from orders where OderID=?',[adminId])

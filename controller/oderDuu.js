@@ -21,10 +21,14 @@ module.exports={
     },
     addoder:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
-        let orde=ctx.request.body.userId
-
-
-          let jsondata=await  DB.addoder(orde);
+        ctx.set('content-type','application/json');
+        let oder = {}
+            oder.userId=ctx.request.body.userId
+           oder.shopId=ctx.request.body.shopId
+           oder.shopnum=ctx.request.body.shopnum
+           oder.adre=ctx.request.body.adre
+           // console.log('orde的id'+orde)
+          let jsondata=await  DB.addoder(oder);
           ctx.body={code:200,message:'add ok',data:jsondata}
 
     },

@@ -1,5 +1,5 @@
-const DB = require('../model/userDAO');
-const formidable = require('formidable');
+var DB = require('../model/userDAO');
+var formidable = require('formidable');
 var fs =require('fs');
 var path=require('path');
 module.exports = {
@@ -36,14 +36,16 @@ module.exports = {
         ctx.body = {code: 200, message: 'message', data: jsondata}
     },
     updateUsers: async (ctx, next) => {
+        console.log('---------------')
         ctx.set('Access-Control-Allow-Origin','*');
         ctx.set('content-type','application/json')
         var form=new formidable.IncomingForm()
         form.multiples=false;
         form.uploadDir='../public/headpic';
         form.multiples = false
-        let users={}
-        form.parse(ctx.req,function (err,fileds,files) {
+
+        form.parse(ctx.req,async function (err,fileds,files) {
+            console.log('------------------111',ctx.req)
             console.log('-----------------图片-------'+files.headpic.name)
             console.log('测试....' + files.headpic.length)
 
@@ -57,7 +59,7 @@ module.exports = {
                 fs.renameSync(press,path.join(path.parse(src).dir,fileDes))
                 console.log('press.............'+press);
 
-            let user = { };
+            let user = {};
             user.userName = fileds.userName;
             user.userPwd = fileds.userPwd;
             // user.userEmail = ctx.request.body.userEmail;
@@ -68,10 +70,12 @@ module.exports = {
             user.userID = fileds.userID;
             user.userPic=fileDes;
 
-               users=user
+            // users=user
+            console.log('**************'+JSON.stringify(user))
+            let  jsondata = await DB.updateUsers(user);
+            ctx.body = {code: 200, message: 'message', data: jsondata}
         })
 
-        let  jsondata = await DB.updateUsers(users);
-        ctx.body = {code: 200, message: 'message', data: jsondata}
+        ctx.body = '上传成功'
     }
 }

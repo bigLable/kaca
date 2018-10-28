@@ -30,5 +30,8 @@ class DB{
 getpic(){
     return DAO('select * from pic',[])
 }
+getworksD(id){
+    return DAO('  SELECT worksdet.Dpic FROM worksdet,works WHERE worksdet.worksId=works.worksId and works.worksId=?',[id])
+}
 }
 module.exports= new DB();

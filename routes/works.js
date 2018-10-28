@@ -17,6 +17,9 @@ router.post('/addWorks',async function (ctx, next) {
 router.get('/deleteworks',async function (ctx, next) {
     await worksDuu.deleteworks(ctx)
 })
+router.get('/getworksD',async function (ctx, next) {
+    await worksDuu.getworksD(ctx)
+})
 router.post('/updateworks',async function (ctx, next) {
     await worksDuu.updateworks(ctx)
 })

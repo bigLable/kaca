@@ -61,6 +61,12 @@ module.exports = {
         let jsondata = await DB.getnewworks()
         ctx.set('content-type', 'application/json');
         ctx.body = jsondata;
-    }
+    },
+    getworksD: async (ctx) => {
+        ctx.set('Access-Control-Allow-Origin', '*');
+        let jsondata = await DB.getworksD(ctx.query.id)
+        ctx.set('content-type', 'application/json');
+        ctx.body = jsondata;
+    },
 
 }

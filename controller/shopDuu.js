@@ -9,9 +9,11 @@ module.exports = {
     },
     shopsearch: async (ctx) => {
         ctx.set('Access-Control-Allow-Origin', '*');
+        console.log('++++++++++'+ctx.query.id);
         let jsondata = await DB.shopsearch(ctx.query.id);
+
         ctx.set('content-type', 'application/json');
-        ctx.body = jsondata;
+        ctx.body = jsondata[0];
     },
     shopGetid: async (ctx) => {
         ctx.set('Access-Control-Allow-Origin', '*');

@@ -4,7 +4,7 @@ class DB{
         return DAO('select * from shop ',[])
     }
     shopsearch(id){
-        return DAO('select * from shop where shopName like "%(?)%" ',[id])
+        return DAO('call getsecher (?)',[id])
     }
     shopGetid(id){
         return DAO('select * from shop where shopId=?',[id])

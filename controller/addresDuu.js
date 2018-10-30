@@ -22,10 +22,8 @@ module.exports={
     addadres:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
         ctx.set('content-type','application/json');
-
-             console.log('到达此处'+ctx.query.adrename)
-
-            let jsondata =await DB.addadres(ctx.query.adrename,ctx.query.userId);
+        console.log('到达此处'+ctx.query.adrename)
+        let jsondata =await DB.addadres(ctx.query.adrename,ctx.query.userId);
         ctx.body={code:200,message:'add ok',data:jsondata}
       },
     deleteadres:async(ctx)=>{

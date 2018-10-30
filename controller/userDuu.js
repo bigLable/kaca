@@ -15,14 +15,9 @@ module.exports = {
         ctx.set('Access-Control-Allow-Origin', '*');
         ctx.set('content-type','application/json');
         console.log(ctx.request.body)
-        //密码加密
-        var pwd =ctx.request.body.userPwd;
-        const hash=crypto.createHash('md5');
-        hash.update(pwd);
-         pwd=hash.digest('hex');
         let user ={};
         user.userEmail = ctx.request.body.userEmail;
-        user.userPwd = pwd;
+        user.userPwd = ctx.request.body.userPwd;
         console.log(user.userEmail);
         let jsondata =  await DB.getOneUser(user.userEmail);
         console.log(jsondata)

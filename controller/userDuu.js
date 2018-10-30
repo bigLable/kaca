@@ -23,7 +23,6 @@ module.exports = {
         let user ={};
         user.userEmail = ctx.request.body.userEmail;
         user.userPwd = pwd;
-        console.log(pwd)
         console.log(user.userEmail);
         let jsondata =  await DB.getOneUser(user.userEmail);
         console.log(jsondata)
@@ -39,6 +38,7 @@ module.exports = {
         user.userPwd = ctx.request.body.userPwd;
         user.userEmail = ctx.request.body.userEmail;
         user.userPhoneNum = ctx.request.body.userPhoneNum;
+        user.userRegisterDate = ctx.request.body.userRegisterDate;
         let jsondata =  await DB.addUsers(user);
 
         ctx.body = {code: 200, message: 'message', data: jsondata}

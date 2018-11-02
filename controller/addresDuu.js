@@ -12,11 +12,13 @@ module.exports={
     },
     getAlladres:async(ctx)=>{
         ctx.set('Access-Control-Allow-Origin','*');
+        ctx.set('content-type','application/json');
         console.log('start')
         let id=ctx.query.userId
+        console.log(id+'id的值')
         let  jsondata=await DB.getAlladres(id);
         console.log(jsondata)
-        ctx.set('content-type','application/json');
+
         ctx.body={code:200,message:'查询地址 ok',data:jsondata};
     },
     addadres:async(ctx)=>{

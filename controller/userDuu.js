@@ -3,6 +3,7 @@ var formidable = require('formidable');
 var fs =require('fs');
 var path=require('path');
 var crypto=require('crypto');
+const moment = require('moment');//用于显示时间
 
 module.exports = {
     getUsers: async (ctx) => {
@@ -28,12 +29,16 @@ module.exports = {
         ctx.set('Access-Control-Allow-Origin','*');
         ctx.set('content-type','application/json')
         console.log(ctx.request.body)
+        const cry=crypto.createHash('md5');
+        cry.update(ctx.request.body.userPwd);
+        var pawd=cry.digest('hex');
         let user = {};
         user.userName = ctx.request.body.userName;
-        user.userPwd = ctx.request.body.userPwd;
+        user.userPwd = pawd;
         user.userEmail = ctx.request.body.userEmail;
         user.userPhoneNum = ctx.request.body.userPhoneNum;
         user.userRegisterDate = ctx.request.body.userRegisterDate;
+        console.log('加密密码'+pawd)
         let jsondata =  await DB.addUsers(user);
 
         ctx.body = {code: 200, message: 'message', data: jsondata}
@@ -42,78 +47,77 @@ module.exports = {
         console.log('---------------')
         ctx.set('Access-Control-Allow-Origin','*');
         ctx.set('content-type','application/json')
-        /* var form=new formidable.IncomingForm()
-         form.multiples=false;
-         form.uploadDir='../public/headpic';
-         form.multiples = false
 
-         form.parse(ctx.req,async function (err,fileds,files) {
-             console.log('------------------111',ctx.req)
-             console.log('-----------------图片-------'+files.headpic.name)
-             console.log('测试....' + files.headpic.length)
-
-                 var filename=files.headpic.name;
-                 var src=files.headpic.path;
-                 var press = path.join(__dirname,files.headpic.path)
-
-                 var pics=path.basename(filename,path.extname(filename))
-                 var fileDes='../'+'public'+pics+path.extname(filename)
-
-                 fs.renameSync(press,path.join(path.parse(src).dir,fileDes))
-                 console.log('press.............'+press);*/
-
-/*
-            let user = {};
-            user.userName = fileds.userName;
-            user.userPwd = fileds.userPwd;
-            // user.userEmail = ctx.request.body.userEmail;
-            user.userSex = fileds.userSex;
-            user.userPhoneNum =fileds.userPhoneNum;
-            user.userPic = fileds.userPic;
-            // user.userRegisterDate = ctx.request.body.userRegisterDate;
-            user.userID = fileds.userID;
-            user.userPic=fileDes;
-
-            // users=user
-            console.log('**************'+JSON.stringify(user))
-            let  jsondata = await DB.updateUsers(user);
-            ctx.body = {code: 200, message: 'message', data: jsondata}
-        },
-
-        ctx.body = '上传成功'*/
         var form = new formidable.IncomingForm();
-        form.uploadDir = '../public/myPic';   //设置文件存放路径
+        form.uploadDir = '../public/headpic';   //设置文件存放路径
         form.multiples = true;  //设置上传多文件
         var filename = "";
-        var src = "";
-        var fileDes = "";
-        form.parse(ctx.req, async function (err, fields, files) {
+
+        form.parse(ctx.req,async function (err, fields, files) {
             // console.log(files)
             //根据files.filename.name获取上传文件名，执行后续写入数据库的操作
-            filename = files.filename.name;
-            src = path.join(__dirname,'../',files.filename.path);
-            fileDes = path.basename(filename, path.extname(filename)) + moment(new Date()).format("YYYYMMDDHHMMSS") + path.extname(filename);
-            console.log("src : " + src)
-            console.log("dir : " + path.join(path.parse(src).dir))
-            console.log("fileDes" + fileDes)
-            fs.rename(src, path.join(path.parse(src).dir,fileDes));
-            let str = `http://localhost:3000/myPic/${fileDes}`;
-            console.log("str : " + str);
-            console.log("fields : " + fields);
-            console.log("mId:   " + fields.mId);
-            let user = {}
-            user.userName = fields.userName;
-            user.userPhoneNum = fields.userPhoneNum;
-            user.userPwd = fields.userPwd;
-            user.userPic = str;
-            try {
-                await await DB.updateUsers(user);
-                ctx.body={"code":200, "message":"ok", data:[]};
-            } catch (e) {
-                ctx.body={"code":500, "message":"err"+e.message, data:[]};
-            }
 
-            // //根据fileds.mydata获取上传表单元素的数据，执行写入数据库的操作
+            let now=new Date().toLocaleString()
+            filename = files.filename.name;
+            // console.log('LLLL'+files.filename.path)
+
+            var src = path.join(__dirname, files.filename.path)//获取源文件全路径
+            console.log("LLL"+src)
+            // var fileDes = path.basename(files.filename.path,path(files.filename.name))
+            fileDes = path.basename(files.filename.path, path.extname(filename)) +now+path.extname(filename);
+            // console.log("PPPPPPPP"+fileDes)
+            // pics = "public/headpic/" + fileDes
+            // 更名同步方式
+            fs.renameSync(src, path.join(path.parse(src).dir, fileDes))
+            let userpic=fileDes
+            console.log("fileDes"+fileDes)
+
+
+            // src = path.join(files.filename.path);
+            //
+            // console.log("src : " + src)
+            // console.log("dir ...........: " + path.join(path.parse(src).dir))
+            // console.log("fileDes" + fileDes)
+            // fs.rename(src, path.join(path.parse(src).dir,fileDes));
+            // let str = `http://localhost:3000/myPic/${fileDes}`;
+
+
+            // console.log("str : " + str);
+            // console.log("fields : " + fields);
+            // console.log("files:   " + files);
+            const cry=crypto.createHash('md5');
+            cry.update(fields.userPwd);
+            var pawd=cry.digest('hex');
+            let users = {}
+            users.userID=fields.userId
+            users.userSex=fields.userSex;
+            users.userName = fields.userName;
+            users.userPhoneNum = fields.userPhoneNum;
+            users.userPwd = pawd;
+            users.userPic = userpic;
+            console.log('加密密码'+pawd)
+            console.log(fields.userId)
+            console.log(fields. userSex)
+            console.log(fields.userName)
+            console.log(fields.userPhoneNum)
+            console.log(userpic)
+
+
+            try{
+                let jsondata=  await DB.updateUsers(users);
+                //3.反馈结果
+                ctx.body = {"code": 200, "message": "ok", data: users}
+                // ctx.render('user', {data: jsondata})
+
+            }catch (e) {
+                ctx.body = {"code": 500, "message": err.toString(), data: []}
+
+            }
+            if (err) {
+                ctx.body = '上传失败'
+            }
         })
-}
+        ctx.body = '上传成功'
+    },
+
 }

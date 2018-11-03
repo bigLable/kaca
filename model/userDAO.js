@@ -15,8 +15,8 @@ class DB{
     }
     //修改一个用户信息
     updateUsers(users){
-        return DAO('update users set userName=?,userPwd=?,userPhoneNum=?,userPic=? where userID=?',
-            [users.userName,users.userPwd,users.userPhoneNum,users.userPic,users.userID])
+        return DAO('update users set userName=?,userPwd=?,userSex=?,userPhoneNum=?,userPic=? where userID=?',
+            [users.userName,users.userPwd,users.userSex,users.userPhoneNum,users.userPic,users.userID])
     }
 }
 module.exports= new DB();

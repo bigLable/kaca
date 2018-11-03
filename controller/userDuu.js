@@ -51,56 +51,39 @@ module.exports = {
         var form = new formidable.IncomingForm();
         form.uploadDir = '../public/headpic';   //设置文件存放路径
         form.multiples = true;  //设置上传多文件
-        var filename = "";
 
         form.parse(ctx.req,async function (err, fields, files) {
-            // console.log(files)
-            //根据files.filename.name获取上传文件名，执行后续写入数据库的操作
 
-            let now=new Date().toLocaleString()
-            filename = files.filename.name;
-            // console.log('LLLL'+files.filename.path)
+            let heapicName=files.filename.name
+            console.log("头像名称"+heapicName);
+            var now=moment(new Date()).format('YYYYMMDDHHmmss');
+            let comppath=path.join(__dirname,files.filename.path)
+            console.log(comppath+'完整路径');
+            //新名
+            let newname=path.basename(heapicName,path.extname(heapicName))+now+path.extname(heapicName)
+            console.log('LL'+newname);
+            let newp=path.join(__dirname,'../public/headpic/'+newname)
+            console.log(newp+'新路径完整')
 
-            var src = path.join(__dirname, files.filename.path)//获取源文件全路径
-            console.log("LLL"+src)
-            // var fileDes = path.basename(files.filename.path,path(files.filename.name))
-            fileDes = path.basename(files.filename.path, path.extname(filename)) +now+path.extname(filename);
-            // console.log("PPPPPPPP"+fileDes)
-            // pics = "public/headpic/" + fileDes
-            // 更名同步方式
-            fs.renameSync(src, path.join(path.parse(src).dir, fileDes))
-            let userpic=fileDes
-            console.log("fileDes"+fileDes)
+            //重命名
 
-
-            // src = path.join(files.filename.path);
-            //
-            // console.log("src : " + src)
-            // console.log("dir ...........: " + path.join(path.parse(src).dir))
-            // console.log("fileDes" + fileDes)
-            // fs.rename(src, path.join(path.parse(src).dir,fileDes));
-            // let str = `http://localhost:3000/myPic/${fileDes}`;
-
-
-            // console.log("str : " + str);
-            // console.log("fields : " + fields);
-            // console.log("files:   " + files);
+            fs.renameSync(comppath,newp)
             const cry=crypto.createHash('md5');
             cry.update(fields.userPwd);
             var pawd=cry.digest('hex');
             let users = {}
-            users.userID=fields.userId
+            users.userID=fields.userId;
             users.userSex=fields.userSex;
             users.userName = fields.userName;
             users.userPhoneNum = fields.userPhoneNum;
             users.userPwd = pawd;
-            users.userPic = userpic;
+            users.userPic = newname;
             console.log('加密密码'+pawd)
             console.log(fields.userId)
-            console.log(fields. userSex)
+            console.log(fields.userSex)
             console.log(fields.userName)
             console.log(fields.userPhoneNum)
-            console.log(userpic)
+            console.log(newname)
 
 
             try{
@@ -110,7 +93,7 @@ module.exports = {
                 // ctx.render('user', {data: jsondata})
 
             }catch (e) {
-                ctx.body = {"code": 500, "message": err.toString(), data: []}
+                ctx.body = {"code": 500, "message": err, data: []}
 
             }
             if (err) {

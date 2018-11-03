@@ -7,15 +7,15 @@ class DB {
     }
    newworks() {
         //获取最新作品信息的方法
-        return DAO('select worksId,worksPic,worksauthor,worksDescribe,worksEquipment,worksDate from works  order by worksDate  desc limit 0,8', [])
+        return DAO('select worksId,worksPic,worksauthor,worksDescribe,worksEquipment,worksDate from works  order by worksDate  desc limit 0,16', [])
     }
     recworks() {
         //获取最新作品信息的方法
-        return DAO('select worksId,worksPic,worksauthor,worksDescribe,worksEquipment,worksDate from works  order by worksId asc limit 0,8', [])
+        return DAO('select worksId,worksPic,worksauthor,worksDescribe,worksEquipment,worksDate from works  order by worksId asc limit 0,16', [])
     }
    hotworks() {
         //获取最新作品信息的方法
-        return DAO('select worksId,worksPic,worksauthor,worksDescribe,worksEquipment,worksDate from works  order by worksDate  asc limit 0,8', [])
+        return DAO('select worksId,worksPic,worksauthor,worksDescribe,worksEquipment,worksDate from works  order by worksDate  asc limit 0,16', [])
     }
 }
     module.exports= new DB();

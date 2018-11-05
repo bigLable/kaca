@@ -20,7 +20,7 @@ class DB{
     }
     //获取评论内容
     getcom(id){
-        return DAO('SELECT comments.commentsContent,comments.commentsDate,users.userName from comments,works,users WHERE comments.worksId=works.worksId and comments.UserID= users.userID and comments.worksId=?',[id])
+        return DAO('SELECT comments.commentsContent,comments.commentsDate,users.userName,users.userPic from comments,works,users WHERE comments.worksId=works.worksId and comments.UserID= users.userID and comments.worksId=?',[id])
     }
 
 }

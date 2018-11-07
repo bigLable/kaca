@@ -10,8 +10,8 @@ class DB{
     }
     //添加一个用户信息的方法
     addUsers(users){
-        return DAO('insert into  users(userName,userPwd,userEmail,userPhoneNum,userRegisterDate) values(?,?,?,?,?)',
-            [users.userName,users.userPwd,users.userEmail,users.userPhoneNum,users.userRegisterDate])
+        return DAO('insert into  users(userName,userPwd,userEmail,userPhoneNum,userPic,userRegisterDate) values(?,?,?,?,?,?)',
+            [users.userName,users.userPwd,users.userEmail,users.userPhoneNum,'pic.jpg',users.userRegisterDate])
     }
     //修改一个用户信息
     updateUsers(users){
